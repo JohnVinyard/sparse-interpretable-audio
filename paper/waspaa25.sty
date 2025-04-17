@@ -1,0 +1,316 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% File:     waspaa25.sty          (LaTeX Document style option "waspaa25")
+%
+% Usage:    \documentclass[9pt,conference]{IEEEtran}
+%           \usepackage{waspaa25}
+%
+%           Or for LaTeX 2.09:
+% Usage:    \documentstyle[...,conference,waspaa25,...]{IEEEtran}
+%
+% Purpose:
+%
+% Style file for WASPAA 2025 Proceeding Manuscripts
+%               (2025 IEEE Workshop on Applications of Signal Processing
+%                to Audio and Acoustics, Granlibakken Tahoe,
+%                Tahoe City, California, October 12-25, 2025
+%                http://www.waspaa.com)
+%
+% Modified from spconf.sty (Stephen Martucci  -- stephen.martucci@ieee.org)
+%
+%
+% Main WASPAA 2025 modifications
+%    - based on IEEEtran.cls's conference style, with modifications
+%      * smaller title (\huge vs. \Huge), higher spacing above title
+%      * use arabic section numbering
+%      * changed appearance of table and figure captions
+%      * fine-tuned spacing around floats and captions
+%    - removed header from past WASPAAs
+%    - removed keywords
+%    - new page size (181mm x 237mm)
+%    - use 9pt option in \documentclass to typeset text in 9 pt; 
+%      default is 10pt. (This used to be handled by \ninept macro)
+%    - [preprint] package option for preprints (includes hyperlinks)
+%    - [doubleblind] package option for double-blind reviews
+%    - added line numbers in doubleblind mode
+%    - added multiple packages in style file, including booktabs,
+%      microtype, cite, hyperref, cleveref, siunitx.
+%
+% Preserved Features:
+%    - twocolumn format
+%    - boldfaced, numbered, and centered section headings
+%    - correct subsection and subsubsection headings
+%    - use \title{xx} for title
+%    - use \name{xx} for author name(s) only, will be typeset in italics
+%    - use \address{xx} for one address of all authors
+%    - use \twoauthors{author1}{address1}{author2}{address2}
+%         for two (or more) authors with two separate addresses
+%    - note: no need for \author nor \date
+%    - optional: can use \thanks{xx} within \name or \twoauthors,
+%         asterisk is not printed after name nor in footnote
+%    - optional: can use \sthanks{xx} after each name within \name or
+%         \twoauthors if different thanks for each author,
+%         footnote symbol will appear for each name and footnote
+%
+% Example of use for one or more authors at a common address and
+%    common support. For distinct support acknowledgments,
+%    use \sthanks{xx} after each name.
+%
+%                 \documentstyle[9pt,conference]{IEEEtran}
+%                 \usepackage{waspaa25}
+%                 \title{Title of the paper}
+%                 \name{George P. Burdell and John Q. Professor
+%                       \thanks{This work was supported by...}}
+%                 \address{Common address, department \\
+%                          City, etc \\
+%                          optional e-mail address}
+%
+%                 \begin{document}
+%                 \maketitle
+%                 \begin{abstract}
+%                 This is the abstract for my paper.
+%                 \end{abstract}
+%                         .
+%                 Insert text of paper
+%                         .
+%                 \end{document}
+%
+% Example of use for two authors at two distinct addresses with only
+%    one support acknowledgment. For distinct support acknowledgments,
+%    use \sthanks{xx} after each name.
+%
+%                 \documentstyle[9pt,conference]{IEEEtran}
+%                 \usepackage{waspaa25}
+%                 \title{Title of the paper}
+%                 \twoauthors{John Doe
+%                       \thanks{This work was supported by...}}
+%                            {Doe's address, department \\
+%                             City, etc \\
+%                             optional e-mail address}
+%                            {Judy Smith}
+%                            {Smith's address, department \\
+%                             City, etc \\
+%                             optional e-mail address}
+%
+%                 \begin{document}
+%                 \maketitle
+%                 \begin{abstract}
+%                 This is the abstract for my paper.
+%                 \end{abstract}
+%                         .
+%                 Insert text of paper
+%                         .
+%                 \end{document}
+%
+%
+% PLEASE REPORT ANY BUGS TO THE LATEST MAINTAINER
+%
+% "spconf.sty" Author:
+%   Stephen Martucci -- stephen.martucci@ieee.org, 3 May 2000
+% Updated:
+%   Lance Cotton, Ulf-Dietrich Braumann, 11 May 2006
+%
+% Modified by WASPAA orgnization committees:
+%   Jyri Huopaniemi       -- jyri.huopaniemi@research.nokia.com
+%   Youngmoo Kim          -- moo@media.mit.edu, 2001
+%   Mark Bartsch          -- mbartsch@umich.edu, 2003
+%   Heinz Teutsch         -- teutsch@LNT.de, 2005
+%   Hiroshi Sawada        -- sawada@cslab.kecl.ntt.co.jp, 2007
+%   Arden Huang           -- arden_huang@ieee.org, 2009
+%   Dan Ellis             -- dpwe@ee.columbia.edu, 2011
+%   Bryan Pardo           -- pardo@northwestern.edu, 2015
+%   Meinard Mueller       -- meinard.mueller@audiolabs-erlangen.de, 2017
+%   Fabio Antonacci       -- fabio.antonacci@polimi.it, 2019
+%   Prasanga Samarasinghe -- prasanga.samarasinghe@anu.edu.au, 2021
+%   Rachel Bittner        -- rachelbittner@spotify.com, 2023
+%
+% Major modification for WASPAA 2025, to rely on the IEEEtran class
+% instead of the article class.
+%   Soumi Maiti           -- soumimaiti@meta.com
+%   Michael Mandel        -- mmandel@meta.com
+%   Jonathan Le Roux      -- leroux@merl.com
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ProvidesPackage{waspaa25}[2025/03/15 Official WASPAA 2025 Package]
+
+\RequirePackage{amsmath,amsfonts,amssymb}
+\RequirePackage{times}
+\RequirePackage[switch]{lineno}
+\RequirePackage{booktabs}
+\RequirePackage{microtype}
+\RequirePackage{cite}
+\RequirePackage[hyphens]{url}
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage{graphicx}
+\RequirePackage{etoolbox,siunitx}
+\robustify\bfseries
+
+%%% Double-blind review option
+\newif\if@doubleblind
+\DeclareOption{doubleblind}{%
+  \@doubleblindtrue
+}
+\newif\if@preprint
+\DeclareOption{preprint}{%
+  \@preprinttrue
+}
+\DeclareOption*{\OptionNotUsed}
+\ProcessOptions\relax
+
+\if@doubleblind
+    \AtBeginDocument{
+        \linenumbers
+    } 
+\fi
+
+\RequirePackage[colorlinks=true,bookmarks=false]{hyperref}
+\hypersetup{allcolors=NavyBlue}
+\if@doubleblind\else
+\if@preprint\else
+\AtBeginDocument{\NoHyper}
+\fi
+\fi
+
+\RequirePackage[capitalize,nameinlink]{cleveref}
+\crefname{equation}{}{}
+\Crefname{equation}{Equation}{Equations}
+
+%%% Title area
+\def\maketitle{\par
+ \begingroup
+ \def\thefootnote{}
+ \def\@makefnmark{\hbox
+ {$^{\@thefnmark}$\hss}}
+ \if@twocolumn
+ \twocolumn[\@maketitle]
+ \else \newpage
+ \global\@topnum\z@ \@maketitle \fi\@thanks
+ \endgroup
+ \setcounter{footnote}{0}
+ \let\maketitle\relax
+ \let\@maketitle\relax
+ \gdef\thefootnote{\arabic{footnote}}\gdef\@@savethanks{}%
+ \gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\thanks\relax}
+
+\def\@maketitle{\newpage
+ \vskip \baselineskip
+ \centering%
+ {\huge \@title \par} \vskip 1.0em {\large \lineskip .5em
+\begin{tabular}[t]{c}\@name \\ \@address
+ \end{tabular}\par} 
+ \par
+ \vskip 1.5em}
+
+\def\anonname{{\em Anonymous submission to WASPAA 2025}\\}
+\def\anonaddress{%
+  $^1$Author names and affiliations omitted for double-blind review.\\
+  $^2$Author information will appear in the camera-ready version.\\}
+
+\def\title#1{\gdef\@title{{#1}}}
+\if@doubleblind
+\def\name#1{\gdef\@name{\anonname}}
+\def\address#1{\gdef\@address{\anonaddress}}
+\else
+\def\name#1{\gdef\@name{{\em #1}\\}}
+\def\address#1{\gdef\@address{#1}}
+\fi
+\gdef\@title{\uppercase{title of paper}}
+\gdef\@name{{\em Name of author}\\}
+\gdef\@address{Address - Line 1 \\
+               Address - Line 2 \\
+               Address - Line 3}
+
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to enable the \thanks{} command. 
+% If that is unneeded, please comment it out.
+
+\let\@@savethanks\thanks
+\def\thanks#1{\gdef\thefootnote{}\@@savethanks{#1}}
+\def\sthanks#1{\gdef\thefootnote{\fnsymbol{footnote}}\@@savethanks{#1}}
+
+\if@doubleblind
+\def\twoauthors#1#2#3#4{\gdef\@name{\anonname}\gdef\@address{\anonaddress}}
+\else
+\def\twoauthors#1#2#3#4{\gdef\@address{}
+   \gdef\@name{\begin{minipage}{0.5\textwidth}\begin{center}\begin{tabular}{@{}c@{}}
+        {\em #1} \\ \\
+        #2\relax
+   \end{tabular}\end{center}\end{minipage}\hfill\begin{minipage}{0.5\textwidth}\begin{center}\begin{tabular}{@{}c@{}}
+        {\em #3} \\ \\
+        #4\relax
+\end{tabular}\end{center}\end{minipage}}}
+\fi
+
+%%% Redefine Section and Subsection to be bold, ALL CAPS, and numbered with arabic numerals
+% The fact that the values in {-1.5ex plus -1.5ex minus -0.5ex} are negative indicates that the first paragraph should not be indented.
+\def\section{\@startsection{section}{1}{\z@}{-1.5ex plus -1.5ex minus -0.5ex}%
+{0.7ex plus 1ex minus 0ex}{\normalfont\bfseries\normalsize\centering}}%
+\def\subsection{\@startsection{subsection}{2}{\z@}{-1.25ex plus -1.25ex minus -0.5ex}%
+{0.7ex plus .5ex minus 0ex}{\normalfont\bfseries\normalsize}}%
+
+% Had to use this hack to get section titles uppercase (using \MakeUppercase 
+% in \def\section above triggered an error in the bibliography):
+\let\oldsection\section
+\def\section{%
+\@ifstar{\@Starred}{\@nonStarred}%
+}
+\def\@Starred#1{
+\oldsection*{\texorpdfstring{\uppercase{#1}}{#1}}%
+}
+\def\@nonStarred#1{%
+\oldsection{\texorpdfstring{\uppercase{#1}}{#1}}%
+}
+\renewcommand{\refname}{REFERENCES}
+
+%%% Replace IEEE's III-A1 section numbering with arabic numerals (e.g., 3.1.1)
+\renewcommand{\thesectiondis}{\arabic{section}.} 
+\renewcommand{\thesubsectiondis}{\thesectiondis\arabic{subsection}.} 
+\renewcommand{\thesubsubsectiondis}{\thesubsectiondis\arabic{subsubsection}.} 
+\renewcommand{\theparagraphdis}{\thesubsubsectiondis\arabic{subsubsection}.} 
+\renewcommand{\thesection}{\arabic{section}} 
+\renewcommand{\thesubsection}{\thesectiondis\arabic{subsection}} 
+\renewcommand{\thesubsubsection}{\thesubsectiondis\arabic{subsubsection}} 
+\renewcommand{\theparagraph}{\thesubsubsectiondis\arabic{subsubsection}} 
+
+%%% Tweak space between table caption and table (0.5\baselineskip added to this)
+\renewcommand{\@IEEEtablecaptionsepspace}{\vskip-2pt\relax}
+% Modify table numbering to match Figure
+\renewcommand{\thetable}{\arabic{table}} % Ensure Arabic numerals
+\renewcommand{\tablename}{Table}
+
+\renewcommand{\@IEEEfigurecaptionsepspace}{\vskip0.5\baselineskip\relax}
+
+%%% Copied and modified from IEEEtran.cls to implement:
+% - Table treated the same as Figure, with Table in line with caption
+% - Table/Fig. bold, followed by ":" and single space
+\long\def\@makecaption#1#2{%
+% test if is a for a figure or table
+\ifx\@captype\@IEEEtablestring%
+% if a table, do table caption
+\footnotesize\bgroup\par\@IEEEtabletopskipstrut{\normalfont\footnotesize \textbf{#1}}: {\normalfont\footnotesize #2}\par\addvspace{0.5\baselineskip}\egroup%
+\@IEEEtablecaptionsepspace
+% if not a table, format it as a figure
+\else
+\@IEEEfigurecaptionsepspace
+% use footnotesize, not small; use single nonbreaking space (IEEEtran uses 2)
+\setbox\@tempboxa\hbox{\normalfont\footnotesize \textbf{#1}:\nobreakspace #2}%
+\ifdim \wd\@tempboxa >\hsize%
+% if caption is longer than a line, let it wrap around
+\setbox\@tempboxa\hbox{\normalfont\footnotesize \textbf{#1}:\nobreakspace}%
+\parbox[t]{\hsize}{\normalfont\footnotesize\noindent\unhbox\@tempboxa#2}%
+% if caption is shorter than a line, center if conference, left justify otherwise
+\else%
+\hbox to\hsize{\normalfont\footnotesize\hfil\box\@tempboxa\hfil}%
+\fi\fi}
+
+%%% Allow more shrinking after floats
+% Single Column Floats
+\floatsep 0.55\baselineskip plus  0.2\baselineskip minus 0.2\baselineskip
+\textfloatsep 0.85\baselineskip plus  0.2\baselineskip minus  0.3\baselineskip
+% Double Column Floats (i.e., Full Width)
+\dblfloatsep 0.65\baselineskip plus  0.2\baselineskip minus  0.2\baselineskip
+\dbltextfloatsep 0.95\baselineskip plus  0.2\baselineskip minus  0.3\baselineskip
+
+
+%%%% EOF
