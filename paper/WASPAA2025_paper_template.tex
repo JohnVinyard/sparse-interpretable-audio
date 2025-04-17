@@ -68,6 +68,7 @@ Audio examples can be heard at this https URL\footnote{\href{https://blog.cochle
 This work draws inspiration from a number of existing techniques, including the field of Auditory Scene Analysis and blind source separation, as well as machine learning techniques like matching pursuit and synthesis techniques like granular synthesis.
 
 - auditory scene analysis
+- blind source separation
 - audio source separation
 - granular synthesis
 - matching pursuit
@@ -83,13 +84,13 @@ silence, trailing applause, and incidental human sounds throughout
 (coughs, movement, etc).
 
 
-
-
 \section{Model}
 \label{sec:model}
 
 \subsection{Encoder}
 \label{ssec:encoder}
+
+TODO: Consider a U-NET or Transformer encoder paired with a sparsity loss
 
 Inspired by matching pursuit, the encoding process is iterative, or incremental.
 At each step, the encoder chooses a single event vector and time-of-occurrence and passes this
@@ -111,10 +112,30 @@ The encoder is paramaterized as an anti-causal, dilated convolutional network.
 \subsection{Decoder}
 \label{ssec:decoder}
 
+In order to encourage a sparser and more easy-to-interpret representation, we 
+parameterize the decoder as a neural network with the following structure:
+
+Each event is roughly interpreted as a physical process, including the injection of
+energy into some system and the long convolutions representing the resonance of the sytem and the
+way the system is deformed over time as it resonates. 
+
 TODO: Diagram of decoder block and scheduling process
 
 \section{Experiments}
 \label{sec:experiments}
+
+\subsection{Training Algorithm}
+\label{ssec:training}
+
+During training, we repeatedly draw segments of audio from the Music Net dataset at random, with 
+length ${2^{17}}$ samples at 22050hz sampling rate and a batch size of two.  Each batch is passed through
+the encoding and decoding process for a fixed number of steps, 32, in our case, and then an iterative loss
+is computed, encouraging each step to have removed as much energy (expressed as the L1 norm) from the 
+signal as possible.  This loss is minimized using the Adam optimizer with a learning rate of ${1e^{-4}}$.
+
+
+\subsection{Loss Functions}
+\label{ssec:loss_functions}
 
 \section{Interpretable and Manipulatable Representation}
 \label{sec:interpretable_representation}

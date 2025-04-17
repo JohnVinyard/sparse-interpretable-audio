@@ -1,15 +1,15 @@
 # Fdb version 3
-["bibtex WASPAA2025_paper_template"] 0 "WASPAA2025_paper_template.aux" "WASPAA2025_paper_template.bbl" "WASPAA2025_paper_template" 1744923485
+["bibtex WASPAA2025_paper_template"] 1744927718 "WASPAA2025_paper_template.aux" "WASPAA2025_paper_template.bbl" "WASPAA2025_paper_template" 1744927814
   "./IEEEtran.bst" 1743033346 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "WASPAA2025_paper_template.aux" 1744923485 10398 182ed72bd78640d6c4ada38704f1c36d "pdflatex"
+  "WASPAA2025_paper_template.aux" 1744927814 10930 9bbb5a38339c81a08c2ad4277fe045f9 "pdflatex"
   "refs25.bib" 1744921956 2741 867d4f9186ef21d7a2a3b132725ddc9c ""
   (generated)
   "WASPAA2025_paper_template.blg"
   "WASPAA2025_paper_template.bbl"
-["pdflatex"] 1744923484 "/home/john/workspace/sparse-interpretable-audio/paper/WASPAA2025_paper_template.tex" "/home/john/workspace/sparse-interpretable-audio/paper/WASPAA2025_paper_template.pdf" "WASPAA2025_paper_template" 1744923485
+["pdflatex"] 1744927813 "/home/john/workspace/sparse-interpretable-audio/paper/WASPAA2025_paper_template.tex" "/home/john/workspace/sparse-interpretable-audio/paper/WASPAA2025_paper_template.pdf" "WASPAA2025_paper_template" 1744927814
   "/etc/texmf/web2c/texmf.cnf" 1743421954 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/john/workspace/sparse-interpretable-audio/paper/WASPAA2025_paper_template.aux" 1744923485 10398 182ed72bd78640d6c4ada38704f1c36d ""
-  "/home/john/workspace/sparse-interpretable-audio/paper/WASPAA2025_paper_template.tex" 1744923482 17913 764f0307f7269fa4e8cf359163fe0a67 ""
+  "/home/john/workspace/sparse-interpretable-audio/paper/WASPAA2025_paper_template.aux" 1744927814 10930 9bbb5a38339c81a08c2ad4277fe045f9 ""
+  "/home/john/workspace/sparse-interpretable-audio/paper/WASPAA2025_paper_template.tex" 1744927813 19039 d3f5074a7a70b04fdc4b2774759ebcae ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrb7t.tfm" 1136768653 960 4ab65358b8406f30ef5496c8c096d22b ""
@@ -71,6 +71,7 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1248133631 32734 69e00a6b65cedb993666e42eedb3d48f ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb" 1248133631 33993 9b89b85fd2d9df0482bd47194d1d3bf3 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb" 1248133631 32587 1788b0c1c5b39540c96f5e42ccd6dae8 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb" 1248133631 32442 c975af247b6702f7ca0c299af3616b80 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy9.pfb" 1248133631 27817 24c2fd675d684d30218eed425386b567 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb" 1248133631 36510 24bd6e95867d9b5c2691bf9144a22cda ""
@@ -165,15 +166,15 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1743422788 4770781 1ed1abab22da9c3e2cc82e4db562318b ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1743422800 8274291 f5624c6e820bb82efd21511861e0a916 ""
   "IEEEtran.cls" 1743033346 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
-  "WASPAA2025_paper_template.aux" 1744923485 10398 182ed72bd78640d6c4ada38704f1c36d "pdflatex"
-  "WASPAA2025_paper_template.bbl" 1744922554 1830 ba0cb077389411c8400dd933452422f5 "bibtex WASPAA2025_paper_template"
-  "WASPAA2025_paper_template.tex" 1744923482 17913 764f0307f7269fa4e8cf359163fe0a67 ""
+  "WASPAA2025_paper_template.aux" 1744927814 10930 9bbb5a38339c81a08c2ad4277fe045f9 "pdflatex"
+  "WASPAA2025_paper_template.bbl" 1744927718 1830 ba0cb077389411c8400dd933452422f5 "bibtex WASPAA2025_paper_template"
+  "WASPAA2025_paper_template.tex" 1744927813 19039 d3f5074a7a70b04fdc4b2774759ebcae ""
   "fig1.pdf" 1743033346 34809 c7364867133d5cadf3ee33efe8e4a6ae ""
   "model.pdf" 1744908599 69150 590d05d351c37705b6761931766bb4dc ""
   "waspaa25.sty" 1743033346 12092 07033c21a3994b54feaf484d900c0f22 ""
   (generated)
   "WASPAA2025_paper_template.log"
-  "WASPAA2025_paper_template.aux"
   "/home/john/workspace/sparse-interpretable-audio/paper/WASPAA2025_paper_template.pdf"
-  "WASPAA2025_paper_template.pdf"
+  "WASPAA2025_paper_template.aux"
   "/home/john/workspace/sparse-interpretable-audio/paper/WASPAA2025_paper_template.log"
+  "WASPAA2025_paper_template.pdf"
