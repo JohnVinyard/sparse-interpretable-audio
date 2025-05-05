@@ -21,29 +21,13 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{10.5555/890205}
+S.~Mallat and Z.~Zhang, ``Matching pursuits with time-frequency dictionaries,''
+  USA, Tech. Rep., 1993.
+
 \bibitem{thickstun2017learning}
 J.~Thickstun, Z.~Harchaoui, and S.~M. Kakade, ``Learning features of music from
   scratch,'' in \emph{International Conference on Learning Representations
   (ICLR)}, 2017.
-
-\bibitem{IEEEXploreReqs}
-{IEEE {X}plore {R}equirements},
-  \url{https://conferences.ieeeauthorcenter.ieee.org/write-your-paper/meet-ieee-xplore-requirements/}.
-
-\bibitem{eWilliams1999}
-E.~Williams, \emph{Fourier Acoustics: Sound Radiation and Nearfield Acoustic
-  Holography}.\hskip 1em plus 0.5em minus 0.4em\relax London, UK: Academic
-  Press, 1999.
-
-\bibitem{cJones2003}
-C.~Jones, A.~Smith, and E.~Roberts, ``A sample paper in conference
-  proceedings,'' in \emph{Proc. ICASSP}, vol.~II, Apr. 2003, pp. 803--806.
-
-\bibitem{aSmith2000}
-A.~Smith, C.~Jones, and E.~Roberts, ``A sample paper in journals,'' \emph{IEEE
-  Trans. Signal Process.}, vol.~62, pp. 291--294, Jan. 2000.
-
-\bibitem{waspaaweb}
-{WASPAA Website}, \url{http://www.waspaa.com}.
 
 \end{thebibliography}
