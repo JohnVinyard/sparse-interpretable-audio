@@ -25,7 +25,9 @@ def generate_deformation(n_samples: int, n_channels: int):
     
 
 def generate_mix():
-    pass
+    samples = torch.zeros(2).uniform_(-1, 1)
+    samples = torch.softmax(samples, dim=-1)
+    return samples[None, :]
 
 
 if __name__ == '__main__':
@@ -38,5 +40,9 @@ if __name__ == '__main__':
     plt.show()
     
     x = generate_deformation(128, 8)
+    plt.matshow(x, cmap='gray')
+    plt.show()
+    
+    x = generate_mix()
     plt.matshow(x, cmap='gray')
     plt.show()
