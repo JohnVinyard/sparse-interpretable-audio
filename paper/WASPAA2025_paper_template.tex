@@ -100,18 +100,34 @@ Audio examples can be heard at this https URL\footnote{\href{https://blog.cochle
 \section{Prior Work}
 \label{sec:prior_work}
 
+We take inspiration from a wealth of previous works dealing with sparse and interpretable
+representations of audio signals.  Matching pursuit\cite{10.5555/890205} is an iterative 
+algorithm that decomposes a signal into a sparse set of representative ``atoms''.  It produces
+a representation of audio signals similar to the one used in 
+granular synthesis\cite{xenakis_formalized_1971}, which represents audio as point-cloud-like
+structure of audio ``grains'' arrange in time.  While the notion of ``events in time'' feels
+intutive to us, both approaches traditionally require very large numbers 
+of ``atoms'' or ``grains'' that are often orders of magnitude smaller, or shorter than 
+our typical conception of audio events.  Furthermore, matching pursuit, at least when 
+operating naively in the time domain can spend capacity on perceptually irrelevant details and 
+struggle to reproduce noisy signals in a convincing way.  In recent years, attempts have 
+been made to use longer atoms and paramterize dictionaries of atoms in more meaningful ways\cite{reds2017}.
+In this work we hope to continue the trend toward fewer and more meaningful ``atoms'' or ``events'' 
+that exist at scales native to say, a human musician.
 
-This work draws inspiration from a number of existing techniques, including the field of Auditory Scene Analysis and blind source separation, as well as machine learning techniques like matching pursuit and synthesis techniques like granular synthesis.
+Unsupervised audio source separation, such as 
+in\cite{schulzeforster2023unsupervisedmusicsourceseparation} seeks to separate mixtures of
+instruments or voices into distinct tracks, or ``stems'' as they are often referred to in 
+music production, while unsupervised music transcription\cite{NIPS2014_e51e118b} seeks to infer
+a musical score, or set of instructions sufficient for a musician to reproduce the piece.  
+In this work, we seek to infer a score of sorts, where each encoded note or event contains 
+enough information to create a perceptually indistinguishable reproduction of the event.
+
+
+
+
 
 DDSP
-
-Reds atoms
-
-- auditory scene analysis
-- blind source separation
-- audio source separation
-- granular synthesis
-- matching pursuit
 - source-excitation models (NEEDS A REFERENCE)
 
 \section{Audio Codec Details}

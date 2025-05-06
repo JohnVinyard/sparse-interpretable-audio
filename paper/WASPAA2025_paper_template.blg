@@ -14,45 +14,45 @@ Database file #1: refs25.bib
 Warning--missing institution in 10.5555/890205
 
 Done.
-You've used 6 entries,
+You've used 10 entries,
             4087 wiz_defined-function locations,
-            925 strings with 9669 characters,
-and the built_in function-call counts, 4665 in all, are:
-= -- 328
-> -- 174
-< -- 23
-+ -- 90
-- -- 37
-* -- 243
-:= -- 691
-add.period$ -- 13
-call.type$ -- 6
-change.case$ -- 6
+            949 strings with 10572 characters,
+and the built_in function-call counts, 6713 in all, are:
+= -- 477
+> -- 237
+< -- 24
++ -- 119
+- -- 52
+* -- 341
+:= -- 1046
+add.period$ -- 22
+call.type$ -- 10
+change.case$ -- 11
 chr.to.int$ -- 60
-cite$ -- 7
-duplicate$ -- 321
-empty$ -- 367
-format.name$ -- 43
-if$ -- 1052
+cite$ -- 11
+duplicate$ -- 481
+empty$ -- 566
+format.name$ -- 61
+if$ -- 1514
 int.to.chr$ -- 0
-int.to.str$ -- 6
-missing$ -- 75
-newline$ -- 49
-num.names$ -- 6
-pop$ -- 209
+int.to.str$ -- 10
+missing$ -- 112
+newline$ -- 67
+num.names$ -- 12
+pop$ -- 312
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 338
+skip$ -- 490
 stack$ -- 0
-substring$ -- 146
-swap$ -- 252
-text.length$ -- 3
+substring$ -- 149
+swap$ -- 350
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 6
+type$ -- 10
 warning$ -- 1
-while$ -- 14
-width$ -- 7
-write$ -- 84
+while$ -- 19
+width$ -- 12
+write$ -- 125
 (There was 1 warning)
