@@ -21,6 +21,13 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{vanDerMaaten2008}
+\BIBentryALTinterwordspacing
+L.~van~der Maaten and G.~Hinton, ``Visualizing data using {t-SNE},''
+  \emph{Journal of Machine Learning Research}, vol.~9, pp. 2579--2605, 2008.
+  [Online]. Available: \url{http://www.jmlr.org/papers/v9/vandermaaten08a.html}
+\BIBentrySTDinterwordspacing
+
 \bibitem{10.5555/890205}
 S.~Mallat and Z.~Zhang, ``Matching pursuits with time-frequency dictionaries,''
   USA, Tech. Rep., 1993.
