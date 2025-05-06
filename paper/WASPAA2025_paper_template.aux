@@ -16,6 +16,9 @@
 \gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{defossez2022highfidelityneuralaudio}
+\citation{kumar2023highfidelityaudiocompressionimproved}
+\citation{NEURIPS2019_9015}
 \citation{vanDerMaaten2008}
 \citation{vanDerMaaten2008}
 \citation{10.5555/890205}
@@ -42,30 +45,30 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Audio Representation}{1}{subsection.4.1}\protected@file@percent }
 \newlabel{ssec:audio_representation}{{4.1}{1}{Audio Representation}{subsection.4.1}{}}
 \newlabel{ssec:audio_representation@cref}{{[subsection][1][4]4.1}{[1][1][]1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Encoder}{1}{subsection.4.2}\protected@file@percent }
-\newlabel{ssec:encoder}{{4.2}{1}{Encoder}{subsection.4.2}{}}
-\newlabel{ssec:encoder@cref}{{[subsection][2][4]4.2}{[1][1][]1}}
 \citation{thickstun2017learning}
 \@LN@col{1}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Model architecture}}{2}{figure.2}\protected@file@percent }
-\newlabel{fig:model_architecture}{{2}{2}{Model architecture}{figure.2}{}}
-\newlabel{fig:model_architecture@cref}{{[figure][2][]2}{[1][1][]2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces High-Level Model Architecture. The encoder and decoder work together to incrementally remove energy from the input representation, and STFT-based magnitude spectrogram, in our case. At each step, the encoder produces a single event vector and time-of-occurrence. The decoder generates an audio event, "schedules" it, and subtracts it from the input representation.}}{2}{figure.2}\protected@file@percent }
+\newlabel{fig:model_architecture}{{2}{2}{High-Level Model Architecture. The encoder and decoder work together to incrementally remove energy from the input representation, and STFT-based magnitude spectrogram, in our case. At each step, the encoder produces a single event vector and time-of-occurrence. The decoder generates an audio event, "schedules" it, and subtracts it from the input representation}{figure.2}{}}
+\newlabel{fig:model_architecture@cref}{{[figure][2][]2}{[1][2][]2}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Decoder Block}}{2}{figure.3}\protected@file@percent }
 \newlabel{fig:decoder_block}{{3}{2}{Decoder Block}{figure.3}{}}
-\newlabel{fig:decoder_block@cref}{{[figure][3][]3}{[1][1][]2}}
+\newlabel{fig:decoder_block@cref}{{[figure][3][]3}{[1][2][]2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Encoder}{2}{subsection.4.2}\protected@file@percent }
+\newlabel{ssec:encoder}{{4.2}{2}{Encoder}{subsection.4.2}{}}
+\newlabel{ssec:encoder@cref}{{[subsection][2][4]4.2}{[1][1][]2}}
+\@LN@col{2}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Streaming Algorithm}{2}{subsection.4.3}\protected@file@percent }
 \newlabel{ssec:streaming_algorithm}{{4.3}{2}{Streaming Algorithm}{subsection.4.3}{}}
-\newlabel{ssec:streaming_algorithm@cref}{{[subsection][3][4]4.3}{[1][1][]2}}
+\newlabel{ssec:streaming_algorithm@cref}{{[subsection][3][4]4.3}{[1][2][]2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Decoder}{2}{subsection.4.4}\protected@file@percent }
 \newlabel{ssec:decoder}{{4.4}{2}{Decoder}{subsection.4.4}{}}
-\newlabel{ssec:decoder@cref}{{[subsection][4][4]4.4}{[1][1][]2}}
+\newlabel{ssec:decoder@cref}{{[subsection][4][4]4.4}{[1][2][]2}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}\uppercase {Experiments}}{2}{section.5}\protected@file@percent }
 \newlabel{sec:experiments}{{5}{2}{\texorpdfstring {\uppercase {Experiments}}{Experiments}}{section.5}{}}
 \newlabel{sec:experiments@cref}{{[section][5][]5}{[1][2][]2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Data Set}{2}{subsection.5.1}\protected@file@percent }
 \newlabel{ssec:data_set}{{5.1}{2}{Data Set}{subsection.5.1}{}}
 \newlabel{ssec:data_set@cref}{{[subsection][1][5]5.1}{[1][2][]2}}
-\@LN@col{2}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Training Algorithm}{2}{subsection.5.2}\protected@file@percent }
 \newlabel{ssec:training}{{5.2}{2}{Training Algorithm}{subsection.5.2}{}}
 \newlabel{ssec:training@cref}{{[subsection][2][5]5.2}{[1][2][]2}}
@@ -90,11 +93,18 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Decoder Variants}{2}{subsection.7.2}\protected@file@percent }
 \newlabel{ssec:decoder_variants}{{7.2}{2}{Decoder Variants}{subsection.7.2}{}}
 \newlabel{ssec:decoder_variants@cref}{{[subsection][2][7]7.2}{[1][2][]2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces  Here we can see intermediate stages of the source-excitation-based decoder at work. From left to right, we see A. a spectrogram of the initial noisy impulse B. a spectogram of the noisy impulse convolved with the chosen decaying resonance and C. the result from step B. convolved with a room impulse response. }}{3}{figure.4}\protected@file@percent }
+\newlabel{fig:event_detail}{{4}{3}{Here we can see intermediate stages of the source-excitation-based decoder at work. From left to right, we see A. a spectrogram of the initial noisy impulse B. a spectogram of the noisy impulse convolved with the chosen decaying resonance and C. the result from step B. convolved with a room impulse response}{figure.4}{}}
+\newlabel{fig:event_detail@cref}{{[figure][4][]4}{[1][2][]3}}
+\@LN@col{2}
 \bibstyle{IEEEtran}
 \bibdata{refs25}
-\bibcite{vanDerMaaten2008}{1}
-\bibcite{10.5555/890205}{2}
-\bibcite{thickstun2017learning}{3}
+\bibcite{defossez2022highfidelityneuralaudio}{1}
+\bibcite{kumar2023highfidelityaudiocompressionimproved}{2}
+\bibcite{NEURIPS2019_9015}{3}
+\bibcite{vanDerMaaten2008}{4}
+\bibcite{10.5555/890205}{5}
+\bibcite{thickstun2017learning}{6}
 \@LN@col{1}
-\@writefile{toc}{\contentsline {section}{REFERENCES}{3}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{REFERENCES}{4}{section*.1}\protected@file@percent }
 \@LN@col{2}

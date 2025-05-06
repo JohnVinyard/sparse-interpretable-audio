@@ -45,8 +45,20 @@
 \maketitle
 
 \begin{abstract}
-  Most widely-used modern audio codecs, such as Ogg Vorbis and MP3, as well as more recent ``neural'' codecs like Meta's Encodec or Descript's are based on block-coding; audio is divided into overlapping, fixed-size ``frames'' which are then compressed. While they result in excellent reproduction quality and can be used for downstream tasks such as text-to-audio, they do not produce an intuitive, directly-interpretable representation.
-  In this work, we introduce a proof-of-concept audio encoder that represents audio as a sparse set of events and their times-of-occurrence. Rudimentary physics-based assumptions are used to model attack and the physical resonance of both the instrument being played and the room in which a performance occurs, hopefully encouraging a sparse, parsimonious, and easy-to-interpret representation.
+  Most widely-used modern audio codecs, such as Ogg Vorbis and MP3, as well 
+  as more recent ``neural'' codecs like Meta's Encodec\cite{defossez2022highfidelityneuralaudio} 
+  or the Descript Audio Codec\cite{kumar2023highfidelityaudiocompressionimproved}
+  based on block-coding; audio is divided into overlapping, 
+  fixed-size ``frames'' which are then compressed. While they often yield excellent 
+  reproduction quality and can be used for downstream 
+  tasks such as text-to-audio, they do not produce an intuitive, 
+  directly-interpretable representation.  In this work, we introduce a 
+  proof-of-concept audio encoder that represents audio as a sparse 
+  set of events and their times-of-occurrence. Rudimentary physics-based 
+  assumptions are used to model attack and the physical resonance of 
+  both the instrument being played and the room in which a performance 
+  occurs, hopefully encouraging a sparse, parsimonious, and 
+  easy-to-interpret representation.
 \end{abstract}
 
 
@@ -63,24 +75,25 @@ composition could take place directly in the audio codec space.
 The text-to-audio paradigm works well for non-musicians creating background 
 music for movies, advertisements or social media content, but it is 
 our view that experienced musicians and composers work in a 
-"space" not fully captured by language and that they will prefer 
+``space'' not fully captured by language and that they will prefer 
 a much finer-grained representation that provides multiple scales 
 of interpretability and control.
 
 This work does not seek to produce a generative model of audio, 
 but could serve as the underlying encoding on which generative 
 models are trained. It is the authors' intuition that models 
-trained on this rich, symbolic representation might have a 
-much deeper "understanding" of the content they produce, 
+trained on this quasi-symbolic representation might have a 
+much more thorough ``understanding'' of the content they produce, 
 given the point-cloud-like nature of the signal. Instead of 
-predicting the next frame, the generative model would be 
-predicting the relationships between "events". Long-term 
-coherence in musical generation has always been a difficult
-problem, and we speculate that many models spend enormous
-shares of their capacity learning to reproduce
-physical resonance, rather than the human forces that drive them in interesting, musical directions.
+predicting the next arbitrarily-sized frame, the generative model 
+would be predicting the relationships between ``events''. Long-term 
+coherence in musical generation continues to be a challenge, and we 
+speculate that many models spend large shares of their capacity 
+learning to reproduce physical resonance, reducing the share 
+that may model the human forces that drive them in interesting, 
+musical directions.
 
-All model and experiment code is implemented using the PyTorch Python library and 
+All model and experiment code is implemented using the PyTorch\cite{NEURIPS2019_9015} Python library and 
 can be found on GitHub\footnote{\href{https://github.com/JohnVinyard/matching-pursuit}{https://github.com/JohnVinyard/matching-pursuit}}. 
 Audio examples can be heard at this https URL\footnote{\href{https://blog.cochlea.xyz/sparse-interpretable-audio-codec-paper.html}{https://blog.cochlea.xyz/sparse-interpretable-audio-codec-paper.html}}
 
@@ -89,6 +102,10 @@ Audio examples can be heard at this https URL\footnote{\href{https://blog.cochle
 
 
 This work draws inspiration from a number of existing techniques, including the field of Auditory Scene Analysis and blind source separation, as well as machine learning techniques like matching pursuit and synthesis techniques like granular synthesis.
+
+DDSP
+
+Reds atoms
 
 - auditory scene analysis
 - blind source separation
@@ -100,7 +117,12 @@ This work draws inspiration from a number of existing techniques, including the 
 \section{Audio Codec Details}
 \label{sec:model}
 
-Things to mention here are sample-level scheduling and overlapping events.
+Our proposed audio encoding is simply a set of two-tuples, each consisting
+a scalar event time, and the parameters required for the decoder to render
+the event, transforming it into ``raw'' PCM audio samples.  In addition to
+straightforward seeking and slicing, this encoding also makes it possible to 
+filter a subset of events in a particular audio slice according to some 
+criteria, an operation that is less straightforward in a block-coding scheme.
 
 % Below is an example of how to insert images.
 % -------------------------------------------------------------------------
@@ -152,7 +174,12 @@ In this work, the encoder is paramaterized as an anti-causal, dilated convolutio
 \begin{figure}[t]
   \centering
   \centerline{\includegraphics[width=\columnwidth]{model}}
-  \caption{Model architecture}
+  \caption{High-Level Model Architecture.  The encoder and decoder 
+  work together to incrementally remove energy from the input 
+  representation, and STFT-based magnitude spectrogram, in our case.  
+  At each step, the encoder produces a single event vector and 
+  time-of-occurrence.  The decoder generates an audio 
+  event, "schedules" it, and subtracts it from the input representation.}
   \label{fig:model_architecture}
 \end{figure}
 
@@ -190,7 +217,7 @@ TODO: Diagram of decoder block and scheduling process
 \subsection{Data Set}
 \label{ssec:data_set}
 
-We train our model on the MusicNet dataset \cite{thickstun2017learning}, an open dataset containing 33 hours 
+We train our model on the MusicNet dataset \cite{thickstun2017learning}, an open dataset containing ~33 hours 
 of classical music, recorded in diverse spaces using a range of 
 recording equipment of varying quality.  The recordings often include leading 
 silence, trailing applause, and incidental human sounds throughout 
@@ -229,6 +256,21 @@ viewing event times, without regard with event "contents".
 
 \subsection{Decoder Interpretation}
 \label{ssec:decoder_interpretation}
+
+% Below is an example of how to insert images.
+% -------------------------------------------------------------------------
+\begin{figure}[t]
+  \centering
+  \centerline{\includegraphics[clip, trim=0cm 0cm 0cm 0cm, width=1.00, width=\columnwidth]{event_detail2}}
+  \caption{
+    Here we can see intermediate stages of the source-excitation-based decoder at work.  
+    From left to right, we see A. a spectrogram of the initial noisy 
+    impulse B. a spectogram of the noisy impulse convolved with the chosen decaying resonance and C. the result from 
+    step B. convolved with a room impulse response.
+  }
+  \label{fig:event_detail}
+\end{figure}
+
 
 For the decoder used in this set of experiments, intermediate 
 states of the decoder are designed to be meaningful given a 
