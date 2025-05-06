@@ -47,6 +47,13 @@ A.~Paszke, S.~Gross, F.~Massa, A.~Lerer, J.~Bradbury, G.~Chanan, T.~Killeen,
   \url{http://papers.neurips.cc/paper/9015-pytorch-an-imperative-style-high-performance-deep-learning-library.pdf}
 \BIBentrySTDinterwordspacing
 
+\bibitem{vanDerMaaten2008}
+\BIBentryALTinterwordspacing
+L.~van~der Maaten and G.~Hinton, ``Visualizing data using {t-SNE},''
+  \emph{Journal of Machine Learning Research}, vol.~9, pp. 2579--2605, 2008.
+  [Online]. Available: \url{http://www.jmlr.org/papers/v9/vandermaaten08a.html}
+\BIBentrySTDinterwordspacing
+
 \bibitem{10.5555/890205}
 S.~Mallat and Z.~Zhang, ``Matching pursuits with time-frequency dictionaries,''
   USA, Tech. Rep., 1993.
@@ -92,11 +99,11 @@ G.~Fant, \emph{Acoustic Theory of Speech Production : With Calculations based
   on X-Ray Studies of Russian Articulations}.\hskip 1em plus 0.5em minus
   0.4em\relax The Hague, Netherlands: Mouton, 1960.
 
-\bibitem{vanDerMaaten2008}
+\bibitem{voxengoir}
 \BIBentryALTinterwordspacing
-L.~van~der Maaten and G.~Hinton, ``Visualizing data using {t-SNE},''
-  \emph{Journal of Machine Learning Research}, vol.~9, pp. 2579--2605, 2008.
-  [Online]. Available: \url{http://www.jmlr.org/papers/v9/vandermaaten08a.html}
+``Voxengo-ir,'' \url{https://oramics.github.io/sampled/IR/Voxengo/}, accessed:
+  2025-05-06. [Online]. Available:
+  \url{https://oramics.github.io/sampled/IR/Voxengo/}
 \BIBentrySTDinterwordspacing
 
 \bibitem{thickstun2017learning}
@@ -104,9 +111,27 @@ J.~Thickstun, Z.~Harchaoui, and S.~M. Kakade, ``Learning features of music from
   scratch,'' in \emph{International Conference on Learning Representations
   (ICLR)}, 2017.
 
-\bibitem{eWilliams1999}
-E.~Williams, \emph{Fourier Acoustics: Sound Radiation and Nearfield Acoustic
-  Holography}.\hskip 1em plus 0.5em minus 0.4em\relax London, UK: Academic
-  Press, 1999.
+\bibitem{cce142f4ee7344d48772f4406d19391d}
+J.~McDermott, A.~Oxenham, and E.~Simoncelli, ``\BIBforeignlanguage{English
+  (US)}{Sound texture synthesis via filter statistics},'' in
+  \emph{\BIBforeignlanguage{English (US)}{2009 IEEE Workshop on Applications of
+  Signal Processing to Audio and Acoustics, WASPAA 2009}}, ser. IEEE Workshop
+  on Applications of Signal Processing to Audio and Acoustics, 2009, pp.
+  297--300, 2009 IEEE Workshop on Applications of Signal Processing to Audio
+  and Acoustics, WASPAA 2009 ; Conference date: 18-10-2009 Through 21-10-2009.
+
+\bibitem{engel2020ddspdifferentiabledigitalsignal}
+\BIBentryALTinterwordspacing
+J.~Engel, L.~Hantrakul, C.~Gu, and A.~Roberts, ``Ddsp: Differentiable digital
+  signal processing,'' 2020. [Online]. Available:
+  \url{https://arxiv.org/abs/2001.04643}
+\BIBentrySTDinterwordspacing
+
+\bibitem{fedus2022switchtransformersscalingtrillion}
+\BIBentryALTinterwordspacing
+W.~Fedus, B.~Zoph, and N.~Shazeer, ``Switch transformers: Scaling to trillion
+  parameter models with simple and efficient sparsity,'' 2022. [Online].
+  Available: \url{https://arxiv.org/abs/2101.03961}
+\BIBentrySTDinterwordspacing
 
 \end{thebibliography}

@@ -92,6 +92,20 @@ All model and experiment code is implemented using the PyTorch\cite{NEURIPS2019_
 can be found on GitHub\footnote{\href{https://github.com/JohnVinyard/matching-pursuit}{https://github.com/JohnVinyard/matching-pursuit}}. 
 Audio examples can be heard at this https URL\footnote{\href{https://blog.cochlea.xyz/sparse-interpretable-audio-codec-paper.html}{https://blog.cochlea.xyz/sparse-interpretable-audio-codec-paper.html}}
 
+% Below is an example of how to insert images.
+% -------------------------------------------------------------------------
+\begin{figure}[t]
+  \centering
+  \centerline{\includegraphics[clip, trim=0cm 8cm 0cm 8cm, width=1.00, width=\columnwidth]{events}}
+  \caption{
+    In this visualization of the codec representation, we see that events can overlap and vary in length.  
+    Time is along the x-axis.  Event positions along the y-axis and event colors are chosen by 
+    applying t-SNE\cite{vanDerMaaten2008} to the set of 32 event vectors, targeting a single dimension for the y-axis and 
+    three dimensions to represent an RGB color value.
+  }
+  \label{fig:audio_events}
+\end{figure}
+
 \section{Prior Work}
 \label{sec:prior_work}
 
@@ -132,37 +146,26 @@ intermediate event states that are somewhat open to inspection and interpretatio
 \section{Audio Codec Details}
 \label{sec:model}
 
-Our proposed audio encoding is simply a set of two-tuples, each consisting
+Our proposed audio encoding is simply a set of two-tuples, each consisting of
 a scalar event time, and the parameters required for the decoder to render
 the event, transforming it into ``raw'' PCM audio samples.  In addition to
 straightforward seeking and slicing, this encoding also makes it possible to 
 filter a subset of events in a particular audio slice according to some 
 criteria, an operation that is less straightforward in a block-coding scheme.
 
-% Below is an example of how to insert images.
-% -------------------------------------------------------------------------
-\begin{figure}[t]
-  \centering
-  \centerline{\includegraphics[clip, trim=0cm 8cm 0cm 8cm, width=1.00, width=\columnwidth]{events}}
-  \caption{
-    In this visualization of the codec representation, we see that events can overlap and vary in length.  
-    Time is along the x-axis.  Event positions along the y-axis and event colors are chosen by 
-    applying t-SNE\cite{vanDerMaaten2008} to the set of 32 event vectors, targeting a single dimension for the y-axis and 
-    three dimensions to represent an RGB color value.
-  }
-  \label{fig:audio_events}
-\end{figure}
+
 
 \subsection{Compression Rate}
 \label{ssec:compression_rate}
 
 
-While a high compression rate is not the primary focus of this work, a
-compressive representation is important and often indicatave of generalization.
+While our main aim in this work is a representation 
+that is sparse, interpretable and easy-to-manipulate, a
+compressive representation is one important aspect of a successful codec and should be discussed.
 For our experiment, the encoder is run a fixed number of steps, 32 in our case,
 and produces a two-tuple of time-of-occurrence and 32-dimensional event vector.  
 Each event time can be stored as a single scalar value.
-Because we encode ${2^{16}}$ samples, or around 5.94 seconds of audio at a time, 
+Because we encode ${2^{16}}$ samples, or around 2.98 seconds of audio at a time, 
 at a 22050hz sampling rate, we arrive at:
 
 \begin{equation}
@@ -175,18 +178,51 @@ at a 22050hz sampling rate, we arrive at:
 
 \subsection{Audio Representation}
 \label{ssec:audio_representation}
-In this work, we seek an audio representation that can be iteratively decomposed, without encoding perceptually-irrelevant details.  For example, a model using "raw" PCM samples as its representation might struggle to remove noisy signals due to undue focus on perceptually irrelevant details.
- 
+
+In this work, we seek an audio representation that can be iteratively decomposed, 
+without wasting capacity on perceptually-irrelevant details.  As a concrete example, 
+removing energy from a time-domain representation of noise can be very difficult, as the
+only way to do so is to match the signal \emph{exactly} even though small time and/or
+frequency shifts would be imperceptibile to the common listener.
+
+We choose the widely-used STFT magnitude spectrogram representation of audio, with a 
+window size of 2048 and a hop size of 256.  The 75\% overlap means that we can discard
+phase but still recover /emph{most} perceptually relevant details, including phase relationships.
+
+While the model only encodes segments of ${2^{16}}$ samples at a time, 
+it \emph{analyzes} segments of ${2^{17}}$, encoding and removing only events that 
+begin in the first half of the audio segment.  This enables a streaming encoder and means
+that the model analyzes an STFT magnitude spectrogram with 1025 real-valued coefficients 
+and 512 ``frames'' in the time dimension.
 
 \subsection{Encoder}
 \label{ssec:encoder}
 
-Inspired by the iterative matching pursuit algorithm \cite{10.5555/890205}, the encoding process is iterative, or incremental.
-At each step, the encoder chooses a single event vector and time-of-occurrence and passes this
-to the decoder, which generates and schedules audio and subtracts it from the input representation.  This process
-is repeated for some fixed number of steps or until some stopping condition is reached.
+In this work, the encoder is paramaterized as an anti-causal, 
+dilated convolutional network with a kernel size of 2 at 
+each layer and dilation sizes of [1, 2, 4, 8, 16, 32, 64].
 
-In this work, the encoder is paramaterized as an anti-causal, dilated convolutional network, but other types of network, such as UNets or Transformers may yield superior results and will be explored in future explorations.
+In our experiments, the encoder runs for a fixed number of steps (32).  At each step,
+it transforms the residual spectrogram, which is the original input spectogram at the
+first step, into a tensor with 32 channels and 512 frames, the same time dimension as the
+input spectrogram.
+
+The encoder then selects a \emph{single} event vector along the time dimension, 
+setting all other 32-dimensional vectors along the time dimension to zero.  
+When we take the norm of each position along the time dimension, we derive a one-hot
+vector that will be used for the coarse-grained timing of the event when it is 
+``scheduled'' after the event decoder has generated the event.
+
+Once generated and scheduled, the STFT magnitude spectrogram of the 
+newly-generated event is computed and subtracted from the residual spectrogram, 
+preparing the model to begin the next iteration.
+
+While our initial experiments use a fixed number of encoding steps, we believe that we
+will be able to devise more intelligent stopping conditions in future versions of this work 
+that take advantage of the variable information density across different audio segments.  
+One simple and obvious possibility is to choose a very small norm for the spectrogram
+at which the sound would no longer be audible to average listeners.
+
 
 % Below is an example of how to insert images.
 % -------------------------------------------------------------------------
@@ -195,16 +231,27 @@ In this work, the encoder is paramaterized as an anti-causal, dilated convolutio
   \centerline{\includegraphics[width=\columnwidth]{model}}
   \caption{High-Level Model Architecture.  The encoder and decoder 
   work together to incrementally remove energy from the input 
-  representation, and STFT-based magnitude spectrogram, in our case.  
+  representation, an STFT-based magnitude spectrogram, in our case.  
   At each step, the encoder produces a single event vector and 
   time-of-occurrence.  The decoder generates an audio 
-  event, "schedules" it, and subtracts it from the input representation.}
+  event, ``schedules'' it, and subtracts it from the input representation.}
   \label{fig:model_architecture}
 \end{figure}
 
 \subsection{Streaming Algorithm}
 \label{ssec:streaming_algorithm}
 
+To enable a streaming encoding algorithm, the encoder masks the second-half of its 
+output just before choosing the next event vector to be decoded and removed.  
+This means that the encoder is always choosing events that begin in the first-half of
+its input, but the events it chooses can extend into and be removed from the second half.
+
+To enforce this focus on the first half of the analyzed signal, we both mask encoder
+output before choosing an event, /emph{and} multiply the second half of the signal 
+by a linear ramp beginning at 1 and ending at 0 which extends from 
+sample ${2^{16}}$ to sample ${2^{17}}$.  This means that model is not penalized as much
+for its failure to remove energy from the second half of the signal and that it does not
+attempt to produce overly-long events that stretch far into the second-half.
 
 \subsection{Decoder}
 \label{ssec:decoder}
@@ -218,39 +265,91 @@ In this work, the encoder is paramaterized as an anti-causal, dilated convolutio
   \label{fig:decoder_block}
 \end{figure}
 
+Instead of a more ``traditional'' convolutional upsampling network, we choose a 
+source-excitation model for the event decoder in the hope that it encourages both
+sparser and easier-to-interpret events.
 
-In order to encourage a sparser and easier-to-interpret representation, we 
-parameterize the decoder as a neural network with the following structure:
+In Figure \ref{fig:decoder_block}, we can see a diagram of a single decoder block.  
+Each decoder block has a few distinct parts with fairly clear interpretations, 
+whose inputs are generated by a small, ``multi-head'' MLP whose input is the 32-dimensional 
+event vector.
 
-Each event is roughly interpreted as a physical process, including the injection of
-energy into some system and the long convolutions representing the resonance of the sytem and the
-way the system is deformed over time as it resonates. 
+The input to each block is a source signal, which takes the form of one or more 
+bursts of noise that represent the injection of energy into the system.  The noise burst
+is convolved with a number of decaying resonances, represented in our work as long FIR 
+filters with exponentially decaying sinusoids.  Each convolved resonance is then multiplied 
+by a time-varying mask and summed, emulating a filter with time-varying parameters, or in 
+a more physical interpretation, the deformations applied over time to a resonating object.
 
-TODO: Diagram of decoder block and scheduling process
+We refer to the number of resonances chosen for a particular block as its expressivity.
+Some simple physical resonances, such as a tuning fork, might only require that expressivity=1, 
+while others, such as a vibrato violin note, might require a larger expressivity number.
 
+Finally a two-channel gain is applied to the original source and the time-varying, 
+filtered-signal, akin to a weighted skip connection.
 
+These decoder blocks can be stacked, with the output of one block serving as the 
+input or ``impulse'' fed to the next.
 
-\section{Experiments}
+For this set of experiments, we choose three decoder blocks, with the last 
+layer being fixed and given an expressivity value of 1.  This block is initialized 
+with a set of freely-available room impulse responses\cite{voxengoir} that are used to generate 
+reverb effects.  This makes it at least /emph{possible} to disentangle instrument 
+and room resonances.
+
+For coarse-grained scheduling, the audio generated by the decoder is first 
+convolved with the one-hot vector produced by the encoder.  Fine-grained, 
+sample-level scheduling is achieved using a frequency-domain time-shift, 
+represented by a single scalar value, that is generated from the event vector
+by one of the decoder's MLP ``heads''.
+
+\subsection{Model Size}
+\label{ssec:model_size}
+
+The model used in our experiments has a total of 45.1M parameters and occupies 
+200MB when serialized to disk.  We feel that even this small model shows promise 
+and that further experiments with larger models are warranted.
+
+\section{Experiment}
 \label{sec:experiments}
+
+Our primary experimental goal is to show that we can encode a large set of 
+``natural'' (non-synthesized) musical audio with diverse instruments and 
+recording conditions into a representation that enjoys sparsity, interpretability 
+and good reproduction quality.
 
 \subsection{Data Set}
 \label{ssec:data_set}
 
-We train our model on the MusicNet dataset \cite{thickstun2017learning}, an open dataset containing ~33 hours 
+We train our model on the MusicNet dataset\cite{thickstun2017learning}, an open dataset containing ~33 hours 
 of classical music, recorded in diverse spaces using a range of 
 recording equipment of varying quality.  The recordings often include leading 
 silence, trailing applause, and incidental human sounds throughout 
 (coughs, movement, etc).
 
+While the dataset includes fine-grained score information about each musical piece, 
+we do not use this part of the dataset, using only the audio to learn our 
+unsupervised model.
+
 
 \subsection{Training Algorithm}
 \label{ssec:training}
 
-During training, we repeatedly draw segments of audio that are approximately 5.94 seconds in length from the Music Net dataset at random, with 
-length ${2^{17}}$ samples at 22050hz sampling rate and a batch size of two.  Each batch is passed through
-the encoding and decoding process for a fixed number of steps, 32, in our case, and then an iterative loss
-is computed, encouraging each step to have removed as much energy (expressed as the L1 norm) from the 
-signal as possible.  This loss is minimized using the Adam optimizer with a learning rate of ${1e^{-4}}$.
+During training, we repeatedly draw segments of audio that are approximately 5.94 seconds in 
+length from the Music Net dataset at random, with 
+length ${2^{17}}$ samples at 22050hz sampling rate and a batch size of two.  
+
+We train using a single NVIDIA GeForce RTX 3060 for approximately 76 hours.
+
+Each batch is passed through the encoding and decoding process for a fixed number of steps, 32, in 
+our case, and then an iterative loss is computed, encouraging each step to have removed as much 
+energy (expressed as the L1 norm) from the signal as possible.  This loss is minimized using 
+the Adam optimizer with a learning rate of ${1e^{-4}}$.  
+Empirically, we found that in early stages of training, the model 
+tended to simply output silence as a pathological local minima.  
+The very-low learning rate seemed to help move beyond these early-stage 
+pathologies, but a learning-rate schedule that increases once the model
+has stabilized might yield better results overall.
 
 
 \subsection{Loss Functions}
@@ -261,17 +360,56 @@ magnitude spectrogram representation observed by the encoder,
 the loss function attempts to maximize the reduction in the 
 L1 norm of the spectrogram at each step.  Prior to computing 
 the loss, the input events are sorted in order of descending 
-norm, such that the event with the most energy is subtracted 
+L1 norm, such that the event with the most energy is subtracted 
 first and the event with the least energy is subtracted last.
+
+\subsection{Results}
+\label{ssec:results}
+
+
+
 
 \section{Interpretable and Manipulatable Representation}
 \label{sec:interpretable_representation}
 
+In this section, we discuss the multiple scales of interpretability and manipulatibliity that we
+believe will be appealing to musicians, and speculate that these features may prove more important
+than compression rate in some scenarios.
+
 \subsection{Events and Times-of-Occurrence}
 \label{ssec:events_and_times}
 
-At the coarse-grained level, overall information density can be gleaned by
-viewing event times, without regard with event "contents".
+As shown in Figure\ref{fig:audio_events}, relatively few events are required 
+to reconstruct musical audio segments.  Information density and temporal structure
+is apparent at-a-glance.  At this scale, we can imagine previewing individual events, 
+translating them in time, and adding or removing individual events or groups of them.
+
+\subsection{Events Vectors}
+\label{ssec:event_vectors}
+
+Aside from a coarse-grained event time, the low-dimensional event vectors 
+encode all information required to produce an audio event.  While this work does
+not explore this latent space in-depth, but an interactive 
+two-dimensional map of event vectors (see Figure\ref{fig:event_scatterplot} ) 
+demonstrates that a nearest-neighbors exploration can locate interesting variations
+on a particular event.
+
+
+% Below is an example of how to insert images.
+% -------------------------------------------------------------------------
+\begin{figure}[t]
+  \centering
+  \centerline{\includegraphics[clip, trim=0cm 0cm 0cm 0cm, width=1.00, width=\columnwidth]{event_scatterplot}}
+  \caption{
+    This scatterplot shows event vectors from a large number of audio 
+    segments mapped onto a 2D-plane using t-SNE\cite{vanDerMaaten2008}.  
+    Exploring nearby neighbors can locate variations of a query event.  
+    An interactive version of this scatterplot can be 
+    explored \href{https://blog.cochlea.xyz/scatter.html}{here}.
+  }
+  \label{fig:event_scatterplot}
+\end{figure}
+
 
 \subsection{Decoder Interpretation}
 \label{ssec:decoder_interpretation}
@@ -290,41 +428,77 @@ viewing event times, without regard with event "contents".
   \label{fig:event_detail}
 \end{figure}
 
+While the high-level model architecture is decoder-agnostic, our choice of
+a source-excitation-inspired decoder in this first experiment means that further 
+interpretation and manipulation is possible by inspecting intermediate decoder states.
+In Figure\ref{fig:event_detail} we see spectrograms of the initial impulse, the resonance, 
+and finally the selected room impulse-response for a single event, chosen at-random.  While this
+work does not include an in-depth exploration of decoder interpration and manipulation, it's possible
+that different impulses, resonances, or room impulse responses could be chosen, 
+while other aspects are held constant in order to subtly or profoundly influence
+the rendering of a particular event.
 
-For the decoder used in this set of experiments, intermediate 
-states of the decoder are designed to be meaningful given a 
-source-excitation interpretation of the synthesis process.
 
+\section{Conclusion}
+\label{sec:conclusion}
+
+In this work, we propose an audio codec optimized for 
+interpretability and ease-of-manipulation and then discuss a simple, 
+small-scale reference implementation of an encoder and decoder network.  
+We find that while subjective reproduction quality falls short in 
+some cases, the results achieved with a relatively small network are
+encouraging, and the properties of the codec that promote intuitive 
+understanding of the audio content are worth further study.
 
 \section{Future Work}
 \label{sec:future_work}
 
+Given the encouraging small-scale results, we feel that there are several
+future experiments ripe for exploration.
+
 \subsection{Better Perceptual Losses}
 \label{ssec:better_perceptual_losses}
 
-TODO: Reference to textural loss paper from Josh McDermott
+Our feeling is that perceptual audio losses are an under-explored area, and
+that adversarial losses often paper over a fundamental mismatch between 
+what our commonly-used audio representations measure and what is 
+perceptually meaningful to humans.  While the magnitude spectrogram 
+representation used in this work may largely solve the problem of 
+dealing with band-limited noise, it does not address higher-level and 
+more complex invariances in human auditory perception, as discussed in\cite{cce142f4ee7344d48772f4406d19391d}.
+Audio losses that are more perceptually-informed will undoubtedly yield more 
+parsimonious results, as model capacity will be spent exclusively on perceptually-relevant details.
+
+\subsection{Encoder Variants}
+\label{ssec:encoder_variants}
+
+It is possible that the anti-causal dilated convolutional network used in this work is
+suboptimal as an encoder.  UNet and transformer enocder architectures are both work
+exploring in future versions of this work.
 
 \subsection{Decoder Variants}
 \label{ssec:decoder_variants}
 
+Anecdotally, we have observed that the roughly-physics-based 
+inductive biases of the decoder encourage a sparser representation and 
+better reconstruction quality, but many other decoder architectures are 
+possible, with much to be learned from the larger field 
+of differentiable digital signal processing\cite{engel2020ddspdifferentiabledigitalsignal}.
+
+Another possibility is that events could be routed to specialized decoders, akin to the 
+switch transformer architecture\cite{fedus2022switchtransformersscalingtrillion}.
+
 \subsection{Redundant Events and Sparsity}
 \label{ssec:decoder_variants}
 
-It's possible that other decoder variants may yield better results, and
-that events might be best routed to different specialized decoders.
+Finally, aside from the physics-based inductive bias in the decoder, this work
+makes no effort to further impose sparsity or penalize overly ``verbose'' representations.
+It is our observation that this iteration of the model frequently produces redunant, 
+overlapping events that could be collapsed further.
 
-\section{Equations}
-\label{sec:equations}
-
-Equations should be placed on separate lines and consecutively numbered with equation numbers in parentheses flush with the right margin, as illustrated in \cref{eq:wave_equation} that gives the homogeneous acoustic wave equation in Cartesian coordinates \cite{eWilliams1999},
-\begin{equation}
-  \label{eq:wave_equation}
-    \Delta^2p(\bm{x},t)-
-    \displaystyle\frac{1}{c^2}\frac{\partial^2p(\bm{x},t)}{\partial t^2}=0,
-\end{equation}
-where $p(\bm{x},t)$ is an infinitesimal variation of acoustic pressure from its equilibrium value at position $\bm{x}\in\RR^3$ and time $t$, and where $c$ denotes the speed of sound.
-
-Symbols in your equation should be defined before the equation appears or immediately following.  Use \cref{eq:wave_equation}, not Eq. (1) or equation (1), except at the beginning of a sentence: ``\Cref{eq:wave_equation} is ...''
+Future work will explore sparsity and/or energy penalties, seeking to maintain high 
+reproduction quality while producing the sparsest, or lowest-energy representation
+that can explain the input signal.
 
 
 

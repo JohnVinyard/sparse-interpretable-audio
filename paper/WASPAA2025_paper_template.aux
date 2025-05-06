@@ -19,6 +19,8 @@
 \citation{defossez2022highfidelityneuralaudio}
 \citation{kumar2023highfidelityaudiocompressionimproved}
 \citation{NEURIPS2019_9015}
+\citation{vanDerMaaten2008}
+\citation{vanDerMaaten2008}
 \citation{10.5555/890205}
 \citation{xenakis_formalized_1971}
 \citation{reds2017}
@@ -26,8 +28,6 @@
 \citation{NIPS2014_e51e118b}
 \citation{lisboa2024spikingmusicaudiocompression}
 \citation{fant1960acoustic}
-\citation{vanDerMaaten2008}
-\citation{vanDerMaaten2008}
 \@LN@col{1}
 \@writefile{toc}{\contentsline {section}{\numberline {1}\uppercase {Introduction}}{1}{section.1}\protected@file@percent }
 \newlabel{sec:intro}{{1}{1}{\texorpdfstring {\uppercase {Introduction}}{Introduction}}{section.1}{}}
@@ -36,101 +36,123 @@
 \newlabel{sec:prior_work}{{2}{1}{\texorpdfstring {\uppercase {Prior Work}}{Prior Work}}{section.2}{}}
 \newlabel{sec:prior_work@cref}{{[section][2][]2}{[1][1][]1}}
 \@LN@col{2}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces  In this visualization of the codec representation, we see that events can overlap and vary in length. Time is along the x-axis. Event positions along the y-axis and event colors are chosen by applying t-SNE\cite  {vanDerMaaten2008} to the set of 32 event vectors, targeting a single dimension for the y-axis and three dimensions to represent an RGB color value. }}{1}{figure.1}\protected@file@percent }
+\newlabel{fig:audio_events}{{1}{1}{In this visualization of the codec representation, we see that events can overlap and vary in length. Time is along the x-axis. Event positions along the y-axis and event colors are chosen by applying t-SNE\cite {vanDerMaaten2008} to the set of 32 event vectors, targeting a single dimension for the y-axis and three dimensions to represent an RGB color value}{figure.1}{}}
+\newlabel{fig:audio_events@cref}{{[figure][1][]1}{[1][1][]1}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}\uppercase {Audio Codec Details}}{1}{section.3}\protected@file@percent }
 \newlabel{sec:model}{{3}{1}{\texorpdfstring {\uppercase {Audio Codec Details}}{Audio Codec Details}}{section.3}{}}
 \newlabel{sec:model@cref}{{[section][3][]3}{[1][1][]1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Compression Rate}{1}{subsection.3.1}\protected@file@percent }
-\newlabel{ssec:compression_rate}{{3.1}{1}{Compression Rate}{subsection.3.1}{}}
-\newlabel{ssec:compression_rate@cref}{{[subsection][1][3]3.1}{[1][1][]1}}
-\newlabel{eq:wave_equation}{{1}{1}{Compression Rate}{equation.3.1}{}}
-\newlabel{eq:wave_equation@cref}{{[equation][1][]1}{[1][1][]1}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}\uppercase {Model}}{1}{section.4}\protected@file@percent }
-\newlabel{sec:model}{{4}{1}{\texorpdfstring {\uppercase {Model}}{Model}}{section.4}{}}
-\newlabel{sec:model@cref}{{[section][4][]4}{[1][1][]1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Audio Representation}{1}{subsection.4.1}\protected@file@percent }
-\newlabel{ssec:audio_representation}{{4.1}{1}{Audio Representation}{subsection.4.1}{}}
-\newlabel{ssec:audio_representation@cref}{{[subsection][1][4]4.1}{[1][1][]1}}
-\citation{10.5555/890205}
-\citation{thickstun2017learning}
 \@LN@col{1}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces  In this visualization of the codec representation, we see that events can overlap and vary in length. Time is along the x-axis. Event positions along the y-axis and event colors are chosen by applying t-SNE\cite  {vanDerMaaten2008} to the set of 32 event vectors, targeting a single dimension for the y-axis and three dimensions to represent an RGB color value. }}{2}{figure.1}\protected@file@percent }
-\newlabel{fig:audio_events}{{1}{2}{In this visualization of the codec representation, we see that events can overlap and vary in length. Time is along the x-axis. Event positions along the y-axis and event colors are chosen by applying t-SNE\cite {vanDerMaaten2008} to the set of 32 event vectors, targeting a single dimension for the y-axis and three dimensions to represent an RGB color value}{figure.1}{}}
-\newlabel{fig:audio_events@cref}{{[figure][1][]1}{[1][1][]2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces High-Level Model Architecture. The encoder and decoder work together to incrementally remove energy from the input representation, and STFT-based magnitude spectrogram, in our case. At each step, the encoder produces a single event vector and time-of-occurrence. The decoder generates an audio event, "schedules" it, and subtracts it from the input representation.}}{2}{figure.2}\protected@file@percent }
-\newlabel{fig:model_architecture}{{2}{2}{High-Level Model Architecture. The encoder and decoder work together to incrementally remove energy from the input representation, and STFT-based magnitude spectrogram, in our case. At each step, the encoder produces a single event vector and time-of-occurrence. The decoder generates an audio event, "schedules" it, and subtracts it from the input representation}{figure.2}{}}
-\newlabel{fig:model_architecture@cref}{{[figure][2][]2}{[1][2][]2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Compression Rate}{2}{subsection.3.1}\protected@file@percent }
+\newlabel{ssec:compression_rate}{{3.1}{2}{Compression Rate}{subsection.3.1}{}}
+\newlabel{ssec:compression_rate@cref}{{[subsection][1][3]3.1}{[1][2][]2}}
+\newlabel{eq:wave_equation}{{1}{2}{Compression Rate}{equation.3.1}{}}
+\newlabel{eq:wave_equation@cref}{{[equation][1][]1}{[1][2][]2}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}\uppercase {Model}}{2}{section.4}\protected@file@percent }
+\newlabel{sec:model}{{4}{2}{\texorpdfstring {\uppercase {Model}}{Model}}{section.4}{}}
+\newlabel{sec:model@cref}{{[section][4][]4}{[1][2][]2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Audio Representation}{2}{subsection.4.1}\protected@file@percent }
+\newlabel{ssec:audio_representation}{{4.1}{2}{Audio Representation}{subsection.4.1}{}}
+\newlabel{ssec:audio_representation@cref}{{[subsection][1][4]4.1}{[1][2][]2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Encoder}{2}{subsection.4.2}\protected@file@percent }
 \newlabel{ssec:encoder}{{4.2}{2}{Encoder}{subsection.4.2}{}}
 \newlabel{ssec:encoder@cref}{{[subsection][2][4]4.2}{[1][2][]2}}
 \@LN@col{2}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces High-Level Model Architecture. The encoder and decoder work together to incrementally remove energy from the input representation, an STFT-based magnitude spectrogram, in our case. At each step, the encoder produces a single event vector and time-of-occurrence. The decoder generates an audio event, ``schedules'' it, and subtracts it from the input representation.}}{2}{figure.2}\protected@file@percent }
+\newlabel{fig:model_architecture}{{2}{2}{High-Level Model Architecture. The encoder and decoder work together to incrementally remove energy from the input representation, an STFT-based magnitude spectrogram, in our case. At each step, the encoder produces a single event vector and time-of-occurrence. The decoder generates an audio event, ``schedules'' it, and subtracts it from the input representation}{figure.2}{}}
+\newlabel{fig:model_architecture@cref}{{[figure][2][]2}{[1][2][]2}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Decoder Block}}{2}{figure.3}\protected@file@percent }
 \newlabel{fig:decoder_block}{{3}{2}{Decoder Block}{figure.3}{}}
 \newlabel{fig:decoder_block@cref}{{[figure][3][]3}{[1][2][]2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Streaming Algorithm}{2}{subsection.4.3}\protected@file@percent }
 \newlabel{ssec:streaming_algorithm}{{4.3}{2}{Streaming Algorithm}{subsection.4.3}{}}
 \newlabel{ssec:streaming_algorithm@cref}{{[subsection][3][4]4.3}{[1][2][]2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Decoder}{2}{subsection.4.4}\protected@file@percent }
-\newlabel{ssec:decoder}{{4.4}{2}{Decoder}{subsection.4.4}{}}
-\newlabel{ssec:decoder@cref}{{[subsection][4][4]4.4}{[1][2][]2}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}\uppercase {Experiments}}{2}{section.5}\protected@file@percent }
-\newlabel{sec:experiments}{{5}{2}{\texorpdfstring {\uppercase {Experiments}}{Experiments}}{section.5}{}}
-\newlabel{sec:experiments@cref}{{[section][5][]5}{[1][2][]2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Data Set}{2}{subsection.5.1}\protected@file@percent }
-\newlabel{ssec:data_set}{{5.1}{2}{Data Set}{subsection.5.1}{}}
-\newlabel{ssec:data_set@cref}{{[subsection][1][5]5.1}{[1][2][]2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Training Algorithm}{2}{subsection.5.2}\protected@file@percent }
-\newlabel{ssec:training}{{5.2}{2}{Training Algorithm}{subsection.5.2}{}}
-\newlabel{ssec:training@cref}{{[subsection][2][5]5.2}{[1][2][]2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Loss Functions}{2}{subsection.5.3}\protected@file@percent }
-\newlabel{ssec:loss_functions}{{5.3}{2}{Loss Functions}{subsection.5.3}{}}
-\newlabel{ssec:loss_functions@cref}{{[subsection][3][5]5.3}{[1][2][]2}}
-\citation{eWilliams1999}
+\citation{voxengoir}
+\citation{thickstun2017learning}
+\citation{vanDerMaaten2008}
+\citation{vanDerMaaten2008}
 \@LN@col{1}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces  Here we can see intermediate stages of the source-excitation-based decoder at work. From left to right, we see A. a spectrogram of the initial noisy impulse B. a spectogram of the noisy impulse convolved with the chosen decaying resonance and C. the result from step B. convolved with a room impulse response. }}{3}{figure.4}\protected@file@percent }
-\newlabel{fig:event_detail}{{4}{3}{Here we can see intermediate stages of the source-excitation-based decoder at work. From left to right, we see A. a spectrogram of the initial noisy impulse B. a spectogram of the noisy impulse convolved with the chosen decaying resonance and C. the result from step B. convolved with a room impulse response}{figure.4}{}}
-\newlabel{fig:event_detail@cref}{{[figure][4][]4}{[1][3][]3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Decoder}{3}{subsection.4.4}\protected@file@percent }
+\newlabel{ssec:decoder}{{4.4}{3}{Decoder}{subsection.4.4}{}}
+\newlabel{ssec:decoder@cref}{{[subsection][4][4]4.4}{[1][2][]3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Model Size}{3}{subsection.4.5}\protected@file@percent }
+\newlabel{ssec:model_size}{{4.5}{3}{Model Size}{subsection.4.5}{}}
+\newlabel{ssec:model_size@cref}{{[subsection][5][4]4.5}{[1][3][]3}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}\uppercase {Experiment}}{3}{section.5}\protected@file@percent }
+\newlabel{sec:experiments}{{5}{3}{\texorpdfstring {\uppercase {Experiment}}{Experiment}}{section.5}{}}
+\newlabel{sec:experiments@cref}{{[section][5][]5}{[1][3][]3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Data Set}{3}{subsection.5.1}\protected@file@percent }
+\newlabel{ssec:data_set}{{5.1}{3}{Data Set}{subsection.5.1}{}}
+\newlabel{ssec:data_set@cref}{{[subsection][1][5]5.1}{[1][3][]3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Training Algorithm}{3}{subsection.5.2}\protected@file@percent }
+\newlabel{ssec:training}{{5.2}{3}{Training Algorithm}{subsection.5.2}{}}
+\newlabel{ssec:training@cref}{{[subsection][2][5]5.2}{[1][3][]3}}
+\@LN@col{2}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Loss Functions}{3}{subsection.5.3}\protected@file@percent }
+\newlabel{ssec:loss_functions}{{5.3}{3}{Loss Functions}{subsection.5.3}{}}
+\newlabel{ssec:loss_functions@cref}{{[subsection][3][5]5.3}{[1][3][]3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Results}{3}{subsection.5.4}\protected@file@percent }
+\newlabel{ssec:results}{{5.4}{3}{Results}{subsection.5.4}{}}
+\newlabel{ssec:results@cref}{{[subsection][4][5]5.4}{[1][3][]3}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}\uppercase {Interpretable and Manipulatable Representation}}{3}{section.6}\protected@file@percent }
 \newlabel{sec:interpretable_representation}{{6}{3}{\texorpdfstring {\uppercase {Interpretable and Manipulatable Representation}}{Interpretable and Manipulatable Representation}}{section.6}{}}
-\newlabel{sec:interpretable_representation@cref}{{[section][6][]6}{[1][2][]3}}
+\newlabel{sec:interpretable_representation@cref}{{[section][6][]6}{[1][3][]3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Events and Times-of-Occurrence}{3}{subsection.6.1}\protected@file@percent }
 \newlabel{ssec:events_and_times}{{6.1}{3}{Events and Times-of-Occurrence}{subsection.6.1}{}}
-\newlabel{ssec:events_and_times@cref}{{[subsection][1][6]6.1}{[1][2][]3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Decoder Interpretation}{3}{subsection.6.2}\protected@file@percent }
-\newlabel{ssec:decoder_interpretation}{{6.2}{3}{Decoder Interpretation}{subsection.6.2}{}}
-\newlabel{ssec:decoder_interpretation@cref}{{[subsection][2][6]6.2}{[1][3][]3}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}\uppercase {Future Work}}{3}{section.7}\protected@file@percent }
-\newlabel{sec:future_work}{{7}{3}{\texorpdfstring {\uppercase {Future Work}}{Future Work}}{section.7}{}}
-\newlabel{sec:future_work@cref}{{[section][7][]7}{[1][3][]3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Better Perceptual Losses}{3}{subsection.7.1}\protected@file@percent }
-\newlabel{ssec:better_perceptual_losses}{{7.1}{3}{Better Perceptual Losses}{subsection.7.1}{}}
-\newlabel{ssec:better_perceptual_losses@cref}{{[subsection][1][7]7.1}{[1][3][]3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Decoder Variants}{3}{subsection.7.2}\protected@file@percent }
-\newlabel{ssec:decoder_variants}{{7.2}{3}{Decoder Variants}{subsection.7.2}{}}
-\newlabel{ssec:decoder_variants@cref}{{[subsection][2][7]7.2}{[1][3][]3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Redundant Events and Sparsity}{3}{subsection.7.3}\protected@file@percent }
-\newlabel{ssec:decoder_variants}{{7.3}{3}{Redundant Events and Sparsity}{subsection.7.3}{}}
-\newlabel{ssec:decoder_variants@cref}{{[subsection][3][7]7.3}{[1][3][]3}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}\uppercase {Equations}}{3}{section.8}\protected@file@percent }
-\newlabel{sec:equations}{{8}{3}{\texorpdfstring {\uppercase {Equations}}{Equations}}{section.8}{}}
-\newlabel{sec:equations@cref}{{[section][8][]8}{[1][3][]3}}
+\newlabel{ssec:events_and_times@cref}{{[subsection][1][6]6.1}{[1][3][]3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Events Vectors}{3}{subsection.6.2}\protected@file@percent }
+\newlabel{ssec:event_vectors}{{6.2}{3}{Events Vectors}{subsection.6.2}{}}
+\newlabel{ssec:event_vectors@cref}{{[subsection][2][6]6.2}{[1][3][]3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Decoder Interpretation}{3}{subsection.6.3}\protected@file@percent }
+\newlabel{ssec:decoder_interpretation}{{6.3}{3}{Decoder Interpretation}{subsection.6.3}{}}
+\newlabel{ssec:decoder_interpretation@cref}{{[subsection][3][6]6.3}{[1][3][]3}}
+\citation{cce142f4ee7344d48772f4406d19391d}
+\citation{engel2020ddspdifferentiabledigitalsignal}
+\citation{fedus2022switchtransformersscalingtrillion}
+\@LN@col{1}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces  This scatterplot shows event vectors from a large number of audio segments mapped onto a 2D-plane using t-SNE\cite  {vanDerMaaten2008}. Exploring nearby neighbors can locate variations of a query event. An interactive version of this scatterplot can be explored \href  {https://blog.cochlea.xyz/scatter.html}{here}. }}{4}{figure.4}\protected@file@percent }
+\newlabel{fig:event_scatterplot}{{4}{4}{This scatterplot shows event vectors from a large number of audio segments mapped onto a 2D-plane using t-SNE\cite {vanDerMaaten2008}. Exploring nearby neighbors can locate variations of a query event. An interactive version of this scatterplot can be explored \href {https://blog.cochlea.xyz/scatter.html}{here}}{figure.4}{}}
+\newlabel{fig:event_scatterplot@cref}{{[figure][4][]4}{[1][3][]4}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}\uppercase {Conclusion}}{4}{section.7}\protected@file@percent }
+\newlabel{sec:conclusion}{{7}{4}{\texorpdfstring {\uppercase {Conclusion}}{Conclusion}}{section.7}{}}
+\newlabel{sec:conclusion@cref}{{[section][7][]7}{[1][3][]4}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}\uppercase {Future Work}}{4}{section.8}\protected@file@percent }
+\newlabel{sec:future_work}{{8}{4}{\texorpdfstring {\uppercase {Future Work}}{Future Work}}{section.8}{}}
+\newlabel{sec:future_work@cref}{{[section][8][]8}{[1][4][]4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Better Perceptual Losses}{4}{subsection.8.1}\protected@file@percent }
+\newlabel{ssec:better_perceptual_losses}{{8.1}{4}{Better Perceptual Losses}{subsection.8.1}{}}
+\newlabel{ssec:better_perceptual_losses@cref}{{[subsection][1][8]8.1}{[1][4][]4}}
 \@LN@col{2}
-\newlabel{eq:wave_equation}{{2}{3}{\texorpdfstring {\uppercase {Equations}}{Equations}}{equation.8.2}{}}
-\newlabel{eq:wave_equation@cref}{{[equation][2][]2}{[1][3][]3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces  Here we can see intermediate stages of the source-excitation-based decoder at work. From left to right, we see A. a spectrogram of the initial noisy impulse B. a spectogram of the noisy impulse convolved with the chosen decaying resonance and C. the result from step B. convolved with a room impulse response. }}{4}{figure.5}\protected@file@percent }
+\newlabel{fig:event_detail}{{5}{4}{Here we can see intermediate stages of the source-excitation-based decoder at work. From left to right, we see A. a spectrogram of the initial noisy impulse B. a spectogram of the noisy impulse convolved with the chosen decaying resonance and C. the result from step B. convolved with a room impulse response}{figure.5}{}}
+\newlabel{fig:event_detail@cref}{{[figure][5][]5}{[1][3][]4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Encoder Variants}{4}{subsection.8.2}\protected@file@percent }
+\newlabel{ssec:encoder_variants}{{8.2}{4}{Encoder Variants}{subsection.8.2}{}}
+\newlabel{ssec:encoder_variants@cref}{{[subsection][2][8]8.2}{[1][4][]4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Decoder Variants}{4}{subsection.8.3}\protected@file@percent }
+\newlabel{ssec:decoder_variants}{{8.3}{4}{Decoder Variants}{subsection.8.3}{}}
+\newlabel{ssec:decoder_variants@cref}{{[subsection][3][8]8.3}{[1][4][]4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Redundant Events and Sparsity}{4}{subsection.8.4}\protected@file@percent }
+\newlabel{ssec:decoder_variants}{{8.4}{4}{Redundant Events and Sparsity}{subsection.8.4}{}}
+\newlabel{ssec:decoder_variants@cref}{{[subsection][4][8]8.4}{[1][4][]4}}
 \bibstyle{IEEEtran}
 \bibdata{refs25}
 \bibcite{defossez2022highfidelityneuralaudio}{1}
 \bibcite{kumar2023highfidelityaudiocompressionimproved}{2}
 \bibcite{NEURIPS2019_9015}{3}
-\bibcite{10.5555/890205}{4}
-\bibcite{xenakis_formalized_1971}{5}
-\bibcite{reds2017}{6}
-\bibcite{schulzeforster2023unsupervisedmusicsourceseparation}{7}
-\bibcite{NIPS2014_e51e118b}{8}
-\bibcite{lisboa2024spikingmusicaudiocompression}{9}
-\bibcite{fant1960acoustic}{10}
-\bibcite{vanDerMaaten2008}{11}
-\bibcite{thickstun2017learning}{12}
-\bibcite{eWilliams1999}{13}
+\bibcite{vanDerMaaten2008}{4}
+\bibcite{10.5555/890205}{5}
+\bibcite{xenakis_formalized_1971}{6}
+\bibcite{reds2017}{7}
+\bibcite{schulzeforster2023unsupervisedmusicsourceseparation}{8}
+\bibcite{NIPS2014_e51e118b}{9}
+\bibcite{lisboa2024spikingmusicaudiocompression}{10}
+\bibcite{fant1960acoustic}{11}
+\bibcite{voxengoir}{12}
+\bibcite{thickstun2017learning}{13}
+\bibcite{cce142f4ee7344d48772f4406d19391d}{14}
+\bibcite{engel2020ddspdifferentiabledigitalsignal}{15}
+\bibcite{fedus2022switchtransformersscalingtrillion}{16}
 \@LN@col{1}
-\@writefile{toc}{\contentsline {section}{REFERENCES}{4}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{REFERENCES}{5}{section*.1}\protected@file@percent }
 \@LN@col{2}

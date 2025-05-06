@@ -279,6 +279,11 @@ INPUT /home/john/workspace/sparse-interpretable-audio/paper/model.pdf
 INPUT /home/john/workspace/sparse-interpretable-audio/paper/decoder.pdf
 INPUT /home/john/workspace/sparse-interpretable-audio/paper/decoder.pdf
 INPUT /home/john/workspace/sparse-interpretable-audio/paper/decoder.pdf
+INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
+INPUT /home/john/workspace/sparse-interpretable-audio/paper/event_scatterplot.pdf
+INPUT /home/john/workspace/sparse-interpretable-audio/paper/event_scatterplot.pdf
+INPUT /home/john/workspace/sparse-interpretable-audio/paper/event_scatterplot.pdf
 INPUT /home/john/workspace/sparse-interpretable-audio/paper/event_detail2.pdf
 INPUT /home/john/workspace/sparse-interpretable-audio/paper/event_detail2.pdf
 INPUT /home/john/workspace/sparse-interpretable-audio/paper/event_detail2.pdf
@@ -289,13 +294,11 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
 INPUT /home/john/workspace/sparse-interpretable-audio/paper/WASPAA2025_paper_template.aux
 INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb
-INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
-INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
