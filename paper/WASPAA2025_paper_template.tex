@@ -58,7 +58,7 @@ compressive representation, and while compression is very
 important, codecs might also transform signals into a representation that
 is easier to interpret and to manipulate. 
 
-We imagine a near-future audio codec where some types of musical 
+We imagine a future audio codec where some types of musical 
 composition could take place directly in the audio codec space. 
 The text-to-audio paradigm works well for non-musicians creating background 
 music for movies, advertisements or social media content, but it is 
@@ -114,9 +114,22 @@ Things to mention here are sample-level scheduling and overlapping events.
 \subsection{Compression Rate}
 \label{ssec:compression_rate}
 
+While a high compression rate is not the primary focus of this work, a
+compressive representation is important and often indicatave of generalization?!?!
+For our experiment, the encoder is run a fixed number of steps, 32 in our case,
+and produces a two-tuple of time-of-occurrence and event vector which has 32 dimensions.  
+Each event time can be stored as a single scalar value.
+Because we encode ${2^{16}}$ samples, or around 5.94 seconds of audio at 22050hz, we arrive 
+at:
+
+
 
 \section{Model}
 \label{sec:model}
+
+\subsection{Audio Representation}
+\label{ssec:audio_representation}
+In this work, we seek an audio representation that can be iteratively decomposed, without encoding perceptually-irrelevant details.  For example, a model using "raw" PCM samples as its representation might struggle to remove noisy signals due to undue focus on perceptually irrelevant details.
  
 
 \subsection{Encoder}
@@ -138,12 +151,22 @@ In this work, the encoder is paramaterized as an anti-causal, dilated convolutio
   \label{fig:model_architecture}
 \end{figure}
 
-\subsection{Audio Representation}
-\label{ssec:audio_representation}
-In this work, we seek an audio representation that can be iteratively decomposed, without encoding perceptually-irrelevant details.  For example, a model using "raw" PCM samples as its representation might struggle to remove noisy signals due to undue focus on perceptually irrelevant details.
+\subsection{Streaming Algorithm}
+\label{ssec:streaming_algorithm}
+
 
 \subsection{Decoder}
 \label{ssec:decoder}
+
+% Below is an example of how to insert images.
+% -------------------------------------------------------------------------
+\begin{figure}[t]
+  \centering
+  \centerline{\includegraphics[width=\columnwidth]{decoder}}
+  \caption{Decoder Block}
+  \label{fig:decoder_block}
+\end{figure}
+
 
 In order to encourage a sparser and easier-to-interpret representation, we 
 parameterize the decoder as a neural network with the following structure:
@@ -196,12 +219,30 @@ first and the event with the least energy is subtracted last.
 \subsection{Events and Times-of-Occurrence}
 \label{ssec:events_and_times}
 
+At the coarse-grained level, overall information density can be gleaned by
+viewing event times, without regard with event "contents".
+
 \subsection{Decoder Interpretation}
 \label{ssec:decoder_interpretation}
+
+For the decoder used in this set of experiments, intermediate 
+states of the decoder are designed to be meaningful given a 
+source-excitation interpretation of the synthesis process.
 
 
 \section{Future Work}
 \label{sec:future_work}
+
+\subsection{Better Perceptual Losses}
+\label{ssec:better_perceptual_losses}
+
+TODO: Reference to textural loss paper from Josh McDermott
+
+\subsection{Decoder Variants}
+\label{ssec:decoder_variants}
+
+It's possible that other decoder variants may yield better results, and
+that events might be best routed to different specialized decoders.
 
 
 % -------------------------------------------------------------------------
