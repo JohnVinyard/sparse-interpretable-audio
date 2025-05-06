@@ -87,6 +87,11 @@ M.~Lisboa and G.~Bellec, ``Spiking music: Audio compression with event based
   \url{https://arxiv.org/abs/2402.01571}
 \BIBentrySTDinterwordspacing
 
+\bibitem{fant1960acoustic}
+G.~Fant, \emph{Acoustic Theory of Speech Production : With Calculations based
+  on X-Ray Studies of Russian Articulations}.\hskip 1em plus 0.5em minus
+  0.4em\relax The Hague, Netherlands: Mouton, 1960.
+
 \bibitem{vanDerMaaten2008}
 \BIBentryALTinterwordspacing
 L.~van~der Maaten and G.~Hinton, ``Visualizing data using {t-SNE},''

@@ -1,15 +1,15 @@
 # Fdb version 3
-["bibtex WASPAA2025_paper_template"] 1746552011 "WASPAA2025_paper_template.aux" "WASPAA2025_paper_template.bbl" "WASPAA2025_paper_template" 1746552014
+["bibtex WASPAA2025_paper_template"] 1746554994 "WASPAA2025_paper_template.aux" "WASPAA2025_paper_template.bbl" "WASPAA2025_paper_template" 1746554997
   "./IEEEtran.bst" 1743033346 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "WASPAA2025_paper_template.aux" 1746552014 11023 2bb9c7c3f1f521bc458a65e20e0d0ac7 "pdflatex"
-  "refs25.bib" 1746551738 7124 c54a91611083b6f4d4c90c82797a1012 ""
+  "WASPAA2025_paper_template.aux" 1746554997 11082 9e4b2ea9a72c2b4974880ece31869ab9 "pdflatex"
+  "refs25.bib" 1746554375 7388 fee3d24e536fe8c66dbc6952f1e01865 ""
   (generated)
-  "WASPAA2025_paper_template.blg"
   "WASPAA2025_paper_template.bbl"
-["pdflatex"] 1746552011 "/home/john/workspace/sparse-interpretable-audio/paper/WASPAA2025_paper_template.tex" "/home/john/workspace/sparse-interpretable-audio/paper/WASPAA2025_paper_template.pdf" "WASPAA2025_paper_template" 1746552014
+  "WASPAA2025_paper_template.blg"
+["pdflatex"] 1746554994 "/home/john/workspace/sparse-interpretable-audio/paper/WASPAA2025_paper_template.tex" "/home/john/workspace/sparse-interpretable-audio/paper/WASPAA2025_paper_template.pdf" "WASPAA2025_paper_template" 1746554997
   "/etc/texmf/web2c/texmf.cnf" 1743421954 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/john/workspace/sparse-interpretable-audio/paper/WASPAA2025_paper_template.aux" 1746552014 11023 2bb9c7c3f1f521bc458a65e20e0d0ac7 ""
-  "/home/john/workspace/sparse-interpretable-audio/paper/WASPAA2025_paper_template.tex" 1746552005 16317 04eec40653146e79deaebf92a2e37923 ""
+  "/home/john/workspace/sparse-interpretable-audio/paper/WASPAA2025_paper_template.aux" 1746554997 11082 9e4b2ea9a72c2b4974880ece31869ab9 ""
+  "/home/john/workspace/sparse-interpretable-audio/paper/WASPAA2025_paper_template.tex" 1746554991 16928 45accad1c7bb5f65b34c76cc1f29031b ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -153,9 +153,9 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1743422788 4770781 1ed1abab22da9c3e2cc82e4db562318b ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1743422800 8274291 f5624c6e820bb82efd21511861e0a916 ""
   "IEEEtran.cls" 1743033346 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
-  "WASPAA2025_paper_template.aux" 1746552014 11023 2bb9c7c3f1f521bc458a65e20e0d0ac7 "pdflatex"
-  "WASPAA2025_paper_template.bbl" 1746552011 4613 56a102e968146a41149e71ac149280a4 "bibtex WASPAA2025_paper_template"
-  "WASPAA2025_paper_template.tex" 1746552005 16317 04eec40653146e79deaebf92a2e37923 ""
+  "WASPAA2025_paper_template.aux" 1746554997 11082 9e4b2ea9a72c2b4974880ece31869ab9 "pdflatex"
+  "WASPAA2025_paper_template.bbl" 1746554994 4844 2e96e62440d4e31b642cabdc3e97a81f "bibtex WASPAA2025_paper_template"
+  "WASPAA2025_paper_template.tex" 1746554991 16928 45accad1c7bb5f65b34c76cc1f29031b ""
   "decoder.pdf" 1746534807 490394 6a2eb7dfebdf1839993a7058c7cecc42 ""
   "event_detail2.pdf" 1746546428 32866 da4397ad3aea6a29057ca7c198cdf008 ""
   "events.pdf" 1746487897 52727 1689786d56c478c6135d9b8644003251 ""
@@ -163,7 +163,7 @@
   "waspaa25.sty" 1743033346 12092 07033c21a3994b54feaf484d900c0f22 ""
   (generated)
   "/home/john/workspace/sparse-interpretable-audio/paper/WASPAA2025_paper_template.pdf"
-  "WASPAA2025_paper_template.aux"
   "WASPAA2025_paper_template.log"
-  "WASPAA2025_paper_template.pdf"
+  "WASPAA2025_paper_template.aux"
   "/home/john/workspace/sparse-interpretable-audio/paper/WASPAA2025_paper_template.log"
+  "WASPAA2025_paper_template.pdf"

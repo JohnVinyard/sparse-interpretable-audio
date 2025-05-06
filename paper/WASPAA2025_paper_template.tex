@@ -125,12 +125,15 @@ as part of the training objective\cite{lisboa2024spikingmusicaudiocompression}
 In this work, we seek to infer a score of sorts, where each encoded note or event contains 
 enough information to create a perceptually indistinguishable reproduction of the event.
 
+Finally, source-excitation synthesis\cite{fant1960acoustic} models natural sounds as injections 
+of energy into a system, often represented by a burst or pulse-train of white noise, and the
+resonance of that system in response to the event, often represented by one or more time-varying
+filters that emulate the resonant modes of the system and any deformations of the system that occur as it 
+resonates.  In this work, we use this model as the basis of the event decoder and this 
+strong inductive bias seems to aid in the promotion of sparsity (few events) and to provide us with
+intermediate event states that are somewhat open to inspection and interpretation.
 
 
-
-
-DDSP
-- source-excitation models (NEEDS A REFERENCE)
 
 \section{Audio Codec Details}
 \label{sec:model}
