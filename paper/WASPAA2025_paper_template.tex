@@ -363,10 +363,6 @@ the loss, the input events are sorted in order of descending
 L1 norm, such that the event with the most energy is subtracted 
 first and the event with the least energy is subtracted last.
 
-\subsection{Results}
-\label{ssec:results}
-
-
 
 
 \section{Interpretable and Manipulatable Representation}
@@ -399,7 +395,7 @@ on a particular event.
 % -------------------------------------------------------------------------
 \begin{figure}[t]
   \centering
-  \centerline{\includegraphics[clip, trim=0cm 0cm 0cm 0cm, width=1.00, width=\columnwidth]{event_scatterplot}}
+  \centerline{\includegraphics[clip, trim=0cm 5cm 0cm 5cm, width=1.00, width=\columnwidth]{event_scatterplot}}
   \caption{
     This scatterplot shows event vectors from a large number of audio 
     segments mapped onto a 2D-plane using t-SNE\cite{vanDerMaaten2008}.  
@@ -418,7 +414,7 @@ on a particular event.
 % -------------------------------------------------------------------------
 \begin{figure}[t]
   \centering
-  \centerline{\includegraphics[clip, trim=0cm 0cm 0cm 0cm, width=1.00, width=\columnwidth]{event_detail2}}
+  \centerline{\includegraphics[clip, trim=0cm 20cm 0cm 5cm, width=1.00, width=\columnwidth]{event_detail2}}
   \caption{
     Here we can see intermediate stages of the source-excitation-based decoder at work.  
     From left to right, we see A. a spectrogram of the initial noisy 
@@ -456,25 +452,27 @@ understanding of the audio content are worth further study.
 Given the encouraging small-scale results, we feel that there are several
 future experiments ripe for exploration.
 
-\subsection{Better Perceptual Losses}
+\subsection{Perceptually-Inspired Losses}
 \label{ssec:better_perceptual_losses}
 
-Our feeling is that perceptual audio losses are an under-explored area, and
-that adversarial losses often paper over a fundamental mismatch between 
-what our commonly-used audio representations measure and what is 
+Our sense is that perceptual audio losses are an under-explored area, and
+that adversarial losses are often introduced to account for a fundamental mismatch 
+between what commonly-used audio representations measure and what is 
 perceptually meaningful to humans.  While the magnitude spectrogram 
 representation used in this work may largely solve the problem of 
 dealing with band-limited noise, it does not address higher-level and 
 more complex invariances in human auditory perception, as discussed in\cite{cce142f4ee7344d48772f4406d19391d}.
-Audio losses that are more perceptually-informed will undoubtedly yield more 
-parsimonious results, as model capacity will be spent exclusively on perceptually-relevant details.
+Leveraging perceptual invariances in ``textures'', such as background hiss and noise, 
+will undoubtedly result in simpler encodings.  Audio losses that are 
+more perceptually-informed will undoubtedly yield more parsimonious results, 
+as model capacity will be spent exclusively on perceptually-relevant details.
 
 \subsection{Encoder Variants}
 \label{ssec:encoder_variants}
 
-It is possible that the anti-causal dilated convolutional network used in this work is
-suboptimal as an encoder.  UNet and transformer enocder architectures are both work
-exploring in future versions of this work.
+The anti-causal dilated convolutional network used in this work, while simple and parameter-efficient, is
+suboptimal as an encoder.  UNet and transformer enocder architectures are both worth
+exploring in future versions of this research.
 
 \subsection{Decoder Variants}
 \label{ssec:decoder_variants}
