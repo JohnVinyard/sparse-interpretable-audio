@@ -120,6 +120,8 @@ in\cite{schulzeforster2023unsupervisedmusicsourceseparation} seeks to separate m
 instruments or voices into distinct tracks, or ``stems'' as they are often referred to in 
 music production, while unsupervised music transcription\cite{NIPS2014_e51e118b} seeks to infer
 a musical score, or set of instructions sufficient for a musician to reproduce the piece.  
+Other recent works seek to produce meaningful latent representations by encouraging sparsity 
+as part of the training objective\cite{lisboa2024spikingmusicaudiocompression}
 In this work, we seek to infer a score of sorts, where each encoded note or event contains 
 enough information to create a perceptually indistinguishable reproduction of the event.
 
@@ -304,8 +306,25 @@ TODO: Reference to textural loss paper from Josh McDermott
 \subsection{Decoder Variants}
 \label{ssec:decoder_variants}
 
+\subsection{Redundant Events and Sparsity}
+\label{ssec:decoder_variants}
+
 It's possible that other decoder variants may yield better results, and
 that events might be best routed to different specialized decoders.
+
+\section{Equations}
+\label{sec:equations}
+
+Equations should be placed on separate lines and consecutively numbered with equation numbers in parentheses flush with the right margin, as illustrated in \cref{eq:wave_equation} that gives the homogeneous acoustic wave equation in Cartesian coordinates \cite{eWilliams1999},
+\begin{equation}
+  \label{eq:wave_equation}
+    \Delta^2p(\bm{x},t)-
+    \displaystyle\frac{1}{c^2}\frac{\partial^2p(\bm{x},t)}{\partial t^2}=0,
+\end{equation}
+where $p(\bm{x},t)$ is an infinitesimal variation of acoustic pressure from its equilibrium value at position $\bm{x}\in\RR^3$ and time $t$, and where $c$ denotes the speed of sound.
+
+Symbols in your equation should be defined before the equation appears or immediately following.  Use \cref{eq:wave_equation}, not Eq. (1) or equation (1), except at the beginning of a sentence: ``\Cref{eq:wave_equation} is ...''
+
 
 
 % -------------------------------------------------------------------------

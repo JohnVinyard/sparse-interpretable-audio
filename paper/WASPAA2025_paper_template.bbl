@@ -80,6 +80,13 @@ T.~Berg-Kirkpatrick, J.~Andreas, and D.~Klein, ``Unsupervised transcription of
   \url{https://proceedings.neurips.cc/paper_files/paper/2014/file/e51e118b28def0cabd5237b4e1fec499-Paper.pdf}
 \BIBentrySTDinterwordspacing
 
+\bibitem{lisboa2024spikingmusicaudiocompression}
+\BIBentryALTinterwordspacing
+M.~Lisboa and G.~Bellec, ``Spiking music: Audio compression with event based
+  auto-encoders,'' 2024. [Online]. Available:
+  \url{https://arxiv.org/abs/2402.01571}
+\BIBentrySTDinterwordspacing
+
 \bibitem{vanDerMaaten2008}
 \BIBentryALTinterwordspacing
 L.~van~der Maaten and G.~Hinton, ``Visualizing data using {t-SNE},''
@@ -91,5 +98,10 @@ L.~van~der Maaten and G.~Hinton, ``Visualizing data using {t-SNE},''
 J.~Thickstun, Z.~Harchaoui, and S.~M. Kakade, ``Learning features of music from
   scratch,'' in \emph{International Conference on Learning Representations
   (ICLR)}, 2017.
+
+\bibitem{eWilliams1999}
+E.~Williams, \emph{Fourier Acoustics: Sound Radiation and Nearfield Acoustic
+  Holography}.\hskip 1em plus 0.5em minus 0.4em\relax London, UK: Academic
+  Press, 1999.
 
 \end{thebibliography}
