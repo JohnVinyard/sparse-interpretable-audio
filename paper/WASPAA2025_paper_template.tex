@@ -65,19 +65,14 @@
 \section{Introduction}
 \label{sec:intro}
 
-Codecs are commonly thought of as transformations into a 
-compressive representation, and while compression is very 
-important, codecs might also transform signals into a representation that
-is easier to interpret and to manipulate. 
-
 We imagine a future audio codec where some types of musical 
 composition could take place directly in the audio codec space. 
 The text-to-audio paradigm works well for non-musicians creating background 
 music for movies, advertisements or social media content, but it is 
 our view that experienced musicians and composers work in a 
-``space'' not fully captured by language and that they will prefer 
-a much finer-grained representation that provides multiple scales 
-of interpretability and control.
+``space'' not fully captured by language and that they will continue to 
+prefer a much finer-grained representation of audio that provides 
+interpretability and control at multiple scales.
 
 This work does not seek to produce a generative model of audio, 
 but could serve as the underlying encoding on which generative 
@@ -134,7 +129,6 @@ strong inductive bias seems to aid in the promotion of sparsity (few events) and
 intermediate event states that are somewhat open to inspection and interpretation.
 
 
-
 \section{Audio Codec Details}
 \label{sec:model}
 
@@ -162,15 +156,19 @@ criteria, an operation that is less straightforward in a block-coding scheme.
 \subsection{Compression Rate}
 \label{ssec:compression_rate}
 
+
 While a high compression rate is not the primary focus of this work, a
-compressive representation is important and often indicatave of generalization?!?!
+compressive representation is important and often indicatave of generalization.
 For our experiment, the encoder is run a fixed number of steps, 32 in our case,
-and produces a two-tuple of time-of-occurrence and event vector which has 32 dimensions.  
+and produces a two-tuple of time-of-occurrence and 32-dimensional event vector.  
 Each event time can be stored as a single scalar value.
-Because we encode ${2^{16}}$ samples, or around 5.94 seconds of audio at 22050hz, we arrive 
-at:
+Because we encode ${2^{16}}$ samples, or around 5.94 seconds of audio at a time, 
+at a 22050hz sampling rate, we arrive at:
 
-
+\begin{equation}
+  \label{eq:wave_equation}
+    \frac{2^{16} samples}{(32 * 32) + 32} = \backsim62x
+\end{equation}
 
 \section{Model}
 \label{sec:model}
