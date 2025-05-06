@@ -8,13 +8,14 @@ def generate_noise_burst(n_samples: int, noise_duration: int):
     samples[:noise_duration] += noise
     return samples
 
-def generate_damped_sinusoid(n_samples: int, frequency: float, exp: float):
+def generate_damped_sinusoid(n_samples: int, frequency: float, exp: float, n_elements: int):
     phase = torch.linspace(-np.pi, np.pi, n_samples)
-    osc = torch.cos(phase * frequency)
-    decay = torch.linspace(1, 0, n_samples) ** exp
+    frequencies = torch.zeros(n_elements).uniform_(0, 1) * frequency
+    decays = torch.zeros(n_elements).uniform_(2, 40)
+    osc = torch.cos(phase[None, :] * frequencies[:, None])
+    decay = torch.linspace(1, 0, n_samples)[None, :] ** decays[:, None]
     x = osc * decay
     return x
-    
 
 def generate_deformation(n_samples: int, n_channels: int):
     samples = torch.zeros(n_channels, n_samples).uniform_(-1, 1)
@@ -30,12 +31,32 @@ def generate_mix():
     return samples[None, :]
 
 
-if __name__ == '__main__':
-    x = generate_damped_sinusoid(8192, 20, 10)
-    plt.plot(x)
-    plt.show()
+def plot_damped_sinusoids(n_samples: int, frequency: float, exp: float, n_elements: int):
+    x = generate_damped_sinusoid(n_samples, frequency, exp, n_elements)
+    fig, ax = plt.subplots(nrows=n_elements, ncols=1)
+    # fig.supxlabel('time')
+    for i, s in enumerate(x):
+        ax[i].set_axis_off()
+        ax[i].plot(s)
+        
     
-    x = generate_noise_burst(2048, 512)
+    plt.tight_layout()
+    plt.show()
+
+if __name__ == '__main__':
+    
+    n_samples = 512
+    max_freq = 160
+    max_decay = 20
+    n_deformations = 8
+    
+    # x = generate_damped_sinusoid(512, 20, 10, 8)
+    # plt.plot(x.T)
+    # plt.show()
+    
+    plot_damped_sinusoids(n_samples, max_freq, max_decay, n_deformations)
+    
+    x = generate_noise_burst(512, 32)
     plt.plot(x)
     plt.show()
     
