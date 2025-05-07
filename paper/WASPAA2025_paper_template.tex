@@ -261,7 +261,10 @@ attempt to produce overly-long events that stretch far into the second-half.
 \begin{figure}[t]
   \centering
   \centerline{\includegraphics[clip, trim=0cm 8cm 0cm 2cm, width=1.00, width=\columnwidth]{decoder}}
-  \caption{Decoder Block}
+  \caption{Here, we can see the anatomy of a decoder block, which performs 
+  something like source-excitation synthesis.  A burst of noise is convolved with a number of decaying resonances.  
+  A time-varying mixture interpolates between the different resonances over time, after which the original impulse 
+  and the resonant signal are mixed together before being output.}
   \label{fig:decoder_block}
 \end{figure}
 
@@ -463,7 +466,7 @@ that adversarial losses are often introduced to account for a fundamental mismat
 between what commonly-used audio representations measure and what is 
 perceptually meaningful to humans.  While the magnitude spectrogram 
 representation used in this work may largely solve the problem of 
-dealing with band-limited noise, it does not address higher-level and 
+dealing with perceptual invariances around band-limited noise, it does not address higher-level and 
 more complex invariances in human auditory perception, as discussed in\cite{cce142f4ee7344d48772f4406d19391d}.
 Leveraging perceptual invariances in ``textures'', such as background hiss and noise, 
 will likely result in simpler encodings.  Audio losses that are 
